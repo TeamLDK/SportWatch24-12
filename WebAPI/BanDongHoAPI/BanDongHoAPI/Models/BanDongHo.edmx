@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="BanDongHoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="BanDongHoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Admin">
           <Key>
             <PropertyRef Name="username" />
@@ -150,6 +150,14 @@
           <Property Name="sdt_don_vi_van_chuyen" Type="varchar" MaxLength="12" Nullable="false" />
           <Property Name="email_don_vi_van_chuyen" Type="varchar" MaxLength="100" />
           <Property Name="phi_van_chuyen" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Wishlist">
+          <Key>
+            <PropertyRef Name="id_kh" />
+            <PropertyRef Name="id_san_pham" />
+          </Key>
+          <Property Name="id_kh" Type="int" Nullable="false" />
+          <Property Name="id_san_pham" Type="varchar" MaxLength="30" Nullable="false" />
         </EntityType>
         <Association Name="FK__Blog__username__5FB337D6">
           <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
@@ -310,6 +318,7 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ThuongHieu" EntityType="Self.ThuongHieu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VanChuyen" EntityType="Self.VanChuyen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wishlist" EntityType="Self.Wishlist" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Blog__username__5FB337D6" Association="Self.FK__Blog__username__5FB337D6">
             <End Role="Admin" EntitySet="Admin" />
             <End Role="Blog" EntitySet="Blog" />
@@ -359,7 +368,8 @@
             <End Role="SanPham" EntitySet="SanPham" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BanDongHoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -373,7 +383,19 @@
           <Property Name="phone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
           <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Blog" Relationship="BanDongHoModel.FK__Blog__username__5FB337D6" FromRole="Admin" ToRole="Blog" />
+          <NavigationProperty Name="Blog" Relationship="Self.FK__Blog__username__5FB337D6" FromRole="Admin" ToRole="Blog" />
+        </EntityType>
+        <EntityType Name="Blog">
+          <Key>
+            <PropertyRef Name="id_blog" />
+          </Key>
+          <Property Name="id_blog" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="time" Type="DateTime" Precision="0" />
+          <Property Name="title" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Admin" Relationship="Self.FK__Blog__username__5FB337D6" FromRole="Blog" ToRole="Admin" />
         </EntityType>
         <EntityType Name="ChiTietHoaDon">
           <Key>
@@ -521,6 +543,26 @@
           <Property Name="phi_van_chuyen" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <NavigationProperty Name="HoaDon" Relationship="Self.FK__HoaDon__id_don_v__25869641" FromRole="VanChuyen" ToRole="HoaDon" />
         </EntityType>
+        <EntityType Name="Wishlist">
+          <Key>
+            <PropertyRef Name="id_kh" />
+            <PropertyRef Name="id_san_pham" />
+          </Key>
+          <Property Name="id_kh" Type="Int32" Nullable="false" />
+          <Property Name="id_san_pham" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Blog__username__5FB337D6">
+          <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
+          <End Role="Blog" Type="Self.Blog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="username" />
+            </Principal>
+            <Dependent Role="Blog">
+              <PropertyRef Name="username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__ChiTietHo__id_ho__29572725">
           <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
           <End Role="ChiTietHoaDon" Type="Self.ChiTietHoaDon" Multiplicity="*" />
@@ -655,6 +697,7 @@
         </Association>
         <EntityContainer Name="BanDongHoEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Admin" EntityType="Self.Admin" />
+          <EntitySet Name="Blog" EntityType="Self.Blog" />
           <EntitySet Name="ChiTietHoaDon" EntityType="Self.ChiTietHoaDon" />
           <EntitySet Name="DangKiNhanTin" EntityType="Self.DangKiNhanTin" />
           <EntitySet Name="DanhMucSanPham" EntityType="Self.DanhMucSanPham" />
@@ -667,6 +710,11 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="ThuongHieu" EntityType="Self.ThuongHieu" />
           <EntitySet Name="VanChuyen" EntityType="Self.VanChuyen" />
+          <EntitySet Name="Wishlist" EntityType="Self.Wishlist" />
+          <AssociationSet Name="FK__Blog__username__5FB337D6" Association="Self.FK__Blog__username__5FB337D6">
+            <End Role="Admin" EntitySet="Admin" />
+            <End Role="Blog" EntitySet="Blog" />
+          </AssociationSet>
           <AssociationSet Name="FK__ChiTietHo__id_ho__29572725" Association="Self.FK__ChiTietHo__id_ho__29572725">
             <End Role="HoaDon" EntitySet="HoaDon" />
             <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDon" />
@@ -711,36 +759,7 @@
             <End Role="ThuongHieu" EntitySet="ThuongHieu" />
             <End Role="SanPham" EntitySet="SanPham" />
           </AssociationSet>
-          <EntitySet Name="Blog" EntityType="BanDongHoModel.Blog" />
-          <AssociationSet Name="FK__Blog__username__5FB337D6" Association="BanDongHoModel.FK__Blog__username__5FB337D6">
-            <End Role="Admin" EntitySet="Admin" />
-            <End Role="Blog" EntitySet="Blog" />
-          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Blog">
-          <Key>
-            <PropertyRef Name="id_blog" />
-          </Key>
-          <Property Name="id_blog" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="time" Type="DateTime" Precision="0" />
-          <Property Name="title" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Admin" Relationship="BanDongHoModel.FK__Blog__username__5FB337D6" FromRole="Blog" ToRole="Admin" />
-        </EntityType>
-        <Association Name="FK__Blog__username__5FB337D6">
-          <End Type="BanDongHoModel.Admin" Role="Admin" Multiplicity="0..1" />
-          <End Type="BanDongHoModel.Blog" Role="Blog" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Admin">
-              <PropertyRef Name="username" />
-            </Principal>
-            <Dependent Role="Blog">
-              <PropertyRef Name="username" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -756,6 +775,18 @@
                 <ScalarProperty Name="phone" ColumnName="phone" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="address" ColumnName="address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Blog">
+            <EntityTypeMapping TypeName="BanDongHoModel.Blog">
+              <MappingFragment StoreEntitySet="Blog">
+                <ScalarProperty Name="id_blog" ColumnName="id_blog" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="time" ColumnName="time" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="content" ColumnName="content" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -893,15 +924,11 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Blog">
-            <EntityTypeMapping TypeName="BanDongHoModel.Blog">
-              <MappingFragment StoreEntitySet="Blog">
-                <ScalarProperty Name="content" ColumnName="content" />
-                <ScalarProperty Name="image" ColumnName="image" />
-                <ScalarProperty Name="title" ColumnName="title" />
-                <ScalarProperty Name="time" ColumnName="time" />
-                <ScalarProperty Name="username" ColumnName="username" />
-                <ScalarProperty Name="id_blog" ColumnName="id_blog" />
+          <EntitySetMapping Name="Wishlist">
+            <EntityTypeMapping TypeName="BanDongHoModel.Wishlist">
+              <MappingFragment StoreEntitySet="Wishlist">
+                <ScalarProperty Name="id_kh" ColumnName="id_kh" />
+                <ScalarProperty Name="id_san_pham" ColumnName="id_san_pham" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

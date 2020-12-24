@@ -19,6 +19,8 @@
 
     <!--====== App ======-->
     <link rel="stylesheet" href="Assets/css/app.css">
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
     <!--====== App Content ======-->
@@ -35,10 +37,13 @@
                                 <ul class="pd-breadcrumb__list">
                                     <li class="has-separator">
 
-                                        <a href="index.aspx">Home</a></li>
+                                        <a href="Index.aspx">Home</a></li>
                                     <li class="has-separator">
 
                                         <a href="Products.aspx">Products</a></li>
+                                    <li class="has-separator">
+
+                                        <span id ="breadcrumb-name-product" style="font-size:15px;"></span></li>
 
                                 </ul>
                             </div>
@@ -48,44 +53,16 @@
                             <!--====== Product Detail Zoom ======-->
                             <div class="pd u-s-m-b-30">
                                 <div class="slider-fouc pd-wrap">
-                                    <div id="pd-o-initiate"><%-- ảnh ở trên--%>
-                                        <div class="pd-o-img-wrap" data-src="Assets/images/product/product-d-1.jpg">
-
-                                            <img class="u-img-fluid" src="Assets/images/product/product-d-1.jpg" data-zoom-image="Assets/images/product/product-d-1.jpg" alt=""></div>
-                                        <div class="pd-o-img-wrap" data-src="Assets/images/product/product-d-2.jpg">
-
-                                            <img class="u-img-fluid" src="Assets/images/product/product-d-2.jpg" data-zoom-image="Assets/images/product/product-d-2.jpg" alt=""></div>
-                                        <div class="pd-o-img-wrap" data-src="Assets/images/product/product-d-3.jpg">
-
-                                            <img class="u-img-fluid" src="Assets/images/product/product-d-3.jpg" data-zoom-image="Assets/images/product/product-d-3.jpg" alt=""></div>
-                                        <div class="pd-o-img-wrap" data-src="Assets/images/product/product-d-4.jpg">
-
-                                            <img class="u-img-fluid" src="Assets/images/product/product-d-4.jpg" data-zoom-image="Assets/images/product/product-d-4.jpg" alt=""></div>
-                                        <div class="pd-o-img-wrap" data-src="Assets/images/product/product-d-5.jpg">
-
-                                            <img class="u-img-fluid" src="Assets/images/product/product-d-5.jpg" data-zoom-image="Assets/images/product/product-d-5.jpg" alt=""></div>
+                                    <div id="pd-o-initiate-img">
+                                        <!-- Image zoom area -->
                                     </div>
 
                                     <span class="pd-text">Click for larger zoom</span>
                                 </div>
-                                <div class="u-s-m-t-15"> <%--ảnh ở dưới--%>
+                                <div class="u-s-m-t-15">
                                     <div class="slider-fouc">
-                                        <div id="pd-o-thumbnail">
-                                            <div>
-
-                                                <img class="u-img-fluid" src="Assets/images/product/product-d-1.jpg" alt=""></div>
-                                            <div>
-
-                                                <img class="u-img-fluid" src="Assets/images/product/product-d-2.jpg" alt=""></div>
-                                            <div>
-
-                                                <img class="u-img-fluid" src="Assets/images/product/product-d-3.jpg" alt=""></div>
-                                            <div>
-
-                                                <img class="u-img-fluid" src="Assets/images/product/product-d-4.jpg" alt=""></div>
-                                            <div>
-
-                                                <img class="u-img-fluid" src="Assets/images/product/product-d-5.jpg" alt=""></div>
+                                        <div id="pd-o-thumbnail-img">
+                                            <!-- Image thumbnail area -->
                                         </div>
                                     </div>
                                 </div>
@@ -95,44 +72,35 @@
                         <div class="col-lg-7">
 
                             <!--====== Product Right Side Details ======-->
-                            <div class="pd-detail">
+                            <div class="pd-detail" style="margin-top:50px;">
                                 <div>
 
-                                    <span class="pd-detail__name">Nikon Camera 4k Lens Zoom Pro</span></div>
+                                    <span class="pd-detail__name" id="name-product"></span></div>
                                 <div>
                                     <div class="pd-detail__inline">
 
-                                        <span class="pd-detail__price">$6.99</span>
+                                        <span class="pd-detail__price" id="price-discount"></span>
 
-                                        <span class="pd-detail__discount">(76% OFF)</span><del class="pd-detail__del">$28.97</del></div>
+                                        <span class="pd-detail__discount" id="percent-discount"></span><del class="pd-detail__del" id="price-product"></del></div>
                                 </div>
                                 <div class="u-s-m-b-15">
                                 </div>
                                 <div class="u-s-m-b-15">
                                     <div class="pd-detail__inline">
 
-                                        <span class="pd-detail__stock">200 in stock</span>
+                                        <span class="pd-detail__stock" id="num-product"></span>
 
                                 </div>
                                 <div class="u-s-m-b-15">
 
-                                    <span class="pd-detail__preview-desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span></div>
+                                    <span class="pd-detail__preview-desc" id="short-description-product"></span></div>
+                                
                                 <div class="u-s-m-b-15">
                                     <div class="pd-detail__inline">
 
                                         <span class="pd-detail__click-wrap"><i class="far fa-heart u-s-m-r-6"></i>
 
-                                            <a href="signin.html">Add to Wishlist</a>
-
-                                </div>
-                                <div class="u-s-m-b-15">
-                                    <div class="pd-detail__inline">
-
-                                        <span class="pd-detail__click-wrap"><i class="far fa-envelope u-s-m-r-6"></i>
-
-                                            <a href="signin.html">Email me When the price drops</a>
-
-                                            <span class="pd-detail__click-count">(20)</span></span></div>
+                                            <a id="add-to-wishlist">Add to Wishlist</a></span></div>
                                 </div>
                                 <div class="u-s-m-b-15">
                                     <ul class="pd-social-list">
@@ -154,17 +122,16 @@
                                     </ul>
                                 </div>
                                 <div class="u-s-m-b-15">
-                                    <form class="pd-detail__form">
+                                    <div class="pd-detail__form">
                                         <div class="pd-detail-inline-2">
                                             <div class="u-s-m-b-15">
 
-                                                <button class="btn btn--e-brand-b-2" type="submit">Buy Now</button></div>
+                                                <button class="btn btn--e-brand-b-2" id="buy-now">Buy Now</button></div>
                                         </div>
-                                    </form>
+                                    </div>
                                 </div>
                             </div>
                             <!--====== End - Product Right Side Details ======-->
-                        </div>
                     </div>
                 </div>
             </div>
@@ -181,26 +148,18 @@
 
                                             <a class="nav-link active" data-toggle="tab" href="#pd-desc">DESCRIPTION</a></li>
                                         <li class="nav-item">
-                                            <!--PHẦN BỎ
-                                            <a class="nav-link" data-toggle="tab" href="#pd-tag">TAGS</a></li>
-                                        <li class="nav-item">
-
-                                            <a class="nav-link" id="view-review" data-toggle="tab" href="#pd-rev">REVIEWS
-
-                                                <span>(23)</span></a></li>
-                                        -->
                                     </ul>
                                 </div>
                                 <div class="tab-content">
 
                                     <!--====== Tab 1 ======-->
-                                    <div class="tab-pane fade show active" id="pd-desc">
+                                    <div class="tab-pane fade show active" >
                                         <div class="pd-tab__desc">
                                             <div class="u-s-m-b-15">
-                                                <p id="pd-tab__decription"></p>
+                                                <p id="long-description-product"></p>
                                             </div>
                                             <div class="u-s-m-b-30" id="image-DESCRIPTION">
-                                                <img class="u-img-fluid"  src="Assets/images/product/product-d-1.jpg" data-zoom-image="Assets/images/product/product-d-1.jpg" alt="">
+                                                <img class="u-img-fluid"  src="#" alt="" id="description-image">
                                             </div>
                                             <div class="u-s-m-b-30">
                                                 <ul>
@@ -221,43 +180,7 @@
                                             <div class="u-s-m-b-15">
                                                 <div class="pd-table gl-scroll">
                                                     <table>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>Main Material</td>
-                                                                <td>Cotton</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Color</td>
-                                                                <td>Green, Blue, Red</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Sleeves</td>
-                                                                <td>Long Sleeve</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Top Fit</td>
-                                                                <td>Regular</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Print</td>
-                                                                <td>Not Printed</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Neck</td>
-                                                                <td>Round Neck</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Pieces Count</td>
-                                                                <td>1 Piece</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Occasion</td>
-                                                                <td>Casual</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Shipping Weight (kg)</td>
-                                                                <td>0.5</td>
-                                                            </tr>
+                                                        <tbody id="table-description">
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -265,289 +188,6 @@
                                         </div>
                                     </div>
                                     <!--====== End - Tab 1 ======-->
-
-
-                                    <!--====== Tab 2 ======-->
-                                    <div class="tab-pane" id="pd-tag">
-                                        <div class="pd-tab__tag">
-                                            <h2 class="u-s-m-b-15">ADD YOUR TAGS</h2>
-                                            <div class="u-s-m-b-15">
-                                                <form>
-
-                                                    <input class="input-text input-text--primary-style" type="text">
-
-                                                    <button class="btn btn--e-brand-b-2" type="submit">ADD TAGS</button></form>
-                                            </div>
-
-                                            <span class="gl-text">Use spaces to separate tags. Use single quotes (') for phrases.</span>
-                                        </div>
-                                    </div>
-                                    <!--====== End - Tab 2 ======-->
-
-
-                                    <!--====== Tab 3 ======-->
-                                    <div class="tab-pane" id="pd-rev">
-                                        <div class="pd-tab__rev">
-                                            <div class="u-s-m-b-30">
-                                                <div class="pd-tab__rev-score">
-                                                    <div class="u-s-m-b-8">
-                                                        <h2>23 Reviews - 4.6 (Overall)</h2>
-                                                    </div>
-                                                    <div class="gl-rating-style-2 u-s-m-b-8"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
-                                                    <div class="u-s-m-b-8">
-                                                        <h4>We want to hear from you!</h4>
-                                                    </div>
-
-                                                    <span class="gl-text">Tell us what you think about this item</span>
-                                                </div>
-                                            </div>
-                                            <div class="u-s-m-b-30">
-                                                <form class="pd-tab__rev-f1">
-                                                    <div class="rev-f1__group">
-                                                        <div class="u-s-m-b-15">
-                                                            <h2>23 Review(s) for Man Ruched Floral Applique Tee</h2>
-                                                        </div>
-                                                        <div class="u-s-m-b-15">
-
-                                                            <label for="sort-review"></label><select class="select-box select-box--primary-style" id="sort-review">
-                                                                <option selected>Sort by: Best Rating</option>
-                                                                <option>Sort by: Worst Rating</option>
-                                                            </select></div>
-                                                    </div>
-                                                    <div class="rev-f1__review">
-                                                        <div class="review-o u-s-m-b-15">
-                                                            <div class="review-o__info u-s-m-b-8">
-
-                                                                <span class="review-o__name">John Doe</span>
-
-                                                                <span class="review-o__date">27 Feb 2018 10:57:43</span></div>
-                                                            <div class="review-o__rating gl-rating-style u-s-m-b-8"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-
-                                                                <span>(4)</span></div>
-                                                            <p class="review-o__text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                                        </div>
-                                                        <div class="review-o u-s-m-b-15">
-                                                            <div class="review-o__info u-s-m-b-8">
-
-                                                                <span class="review-o__name">John Doe</span>
-
-                                                                <span class="review-o__date">27 Feb 2018 10:57:43</span></div>
-                                                            <div class="review-o__rating gl-rating-style u-s-m-b-8"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-
-                                                                <span>(4)</span></div>
-                                                            <p class="review-o__text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                                        </div>
-                                                        <div class="review-o u-s-m-b-15">
-                                                            <div class="review-o__info u-s-m-b-8">
-
-                                                                <span class="review-o__name">John Doe</span>
-
-                                                                <span class="review-o__date">27 Feb 2018 10:57:43</span></div>
-                                                            <div class="review-o__rating gl-rating-style u-s-m-b-8"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-
-                                                                <span>(4)</span></div>
-                                                            <p class="review-o__text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="u-s-m-b-30">
-                                                <form class="pd-tab__rev-f2">
-                                                    <h2 class="u-s-m-b-15">Add a Review</h2>
-
-                                                    <span class="gl-text u-s-m-b-15">Your email address will not be published. Required fields are marked *</span>
-                                                    <div class="u-s-m-b-30">
-                                                        <div class="rev-f2__table-wrap gl-scroll">
-                                                            <table class="rev-f2__table">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>
-                                                                            <div class="gl-rating-style-2"><i class="fas fa-star"></i>
-
-                                                                                <span>(1)</span></div>
-                                                                        </th>
-                                                                        <th>
-                                                                            <div class="gl-rating-style-2"><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-
-                                                                                <span>(1.5)</span></div>
-                                                                        </th>
-                                                                        <th>
-                                                                            <div class="gl-rating-style-2"><i class="fas fa-star"></i><i class="fas fa-star"></i>
-
-                                                                                <span>(2)</span></div>
-                                                                        </th>
-                                                                        <th>
-                                                                            <div class="gl-rating-style-2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-
-                                                                                <span>(2.5)</span></div>
-                                                                        </th>
-                                                                        <th>
-                                                                            <div class="gl-rating-style-2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-
-                                                                                <span>(3)</span></div>
-                                                                        </th>
-                                                                        <th>
-                                                                            <div class="gl-rating-style-2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-
-                                                                                <span>(3.5)</span></div>
-                                                                        </th>
-                                                                        <th>
-                                                                            <div class="gl-rating-style-2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-
-                                                                                <span>(4)</span></div>
-                                                                        </th>
-                                                                        <th>
-                                                                            <div class="gl-rating-style-2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-
-                                                                                <span>(4.5)</span></div>
-                                                                        </th>
-                                                                        <th>
-                                                                            <div class="gl-rating-style-2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-
-                                                                                <span>(5)</span></div>
-                                                                        </th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td>
-
-                                                                            <!--====== Radio Box ======-->
-                                                                            <div class="radio-box">
-
-                                                                                <input type="radio" id="star-1" name="rating">
-                                                                                <div class="radio-box__state radio-box__state--primary">
-
-                                                                                    <label class="radio-box__label" for="star-1"></label></div>
-                                                                            </div>
-                                                                            <!--====== End - Radio Box ======-->
-                                                                        </td>
-                                                                        <td>
-
-                                                                            <!--====== Radio Box ======-->
-                                                                            <div class="radio-box">
-
-                                                                                <input type="radio" id="star-1.5" name="rating">
-                                                                                <div class="radio-box__state radio-box__state--primary">
-
-                                                                                    <label class="radio-box__label" for="star-1.5"></label></div>
-                                                                            </div>
-                                                                            <!--====== End - Radio Box ======-->
-                                                                        </td>
-                                                                        <td>
-
-                                                                            <!--====== Radio Box ======-->
-                                                                            <div class="radio-box">
-
-                                                                                <input type="radio" id="star-2" name="rating">
-                                                                                <div class="radio-box__state radio-box__state--primary">
-
-                                                                                    <label class="radio-box__label" for="star-2"></label></div>
-                                                                            </div>
-                                                                            <!--====== End - Radio Box ======-->
-                                                                        </td>
-                                                                        <td>
-
-                                                                            <!--====== Radio Box ======-->
-                                                                            <div class="radio-box">
-
-                                                                                <input type="radio" id="star-2.5" name="rating">
-                                                                                <div class="radio-box__state radio-box__state--primary">
-
-                                                                                    <label class="radio-box__label" for="star-2.5"></label></div>
-                                                                            </div>
-                                                                            <!--====== End - Radio Box ======-->
-                                                                        </td>
-                                                                        <td>
-
-                                                                            <!--====== Radio Box ======-->
-                                                                            <div class="radio-box">
-
-                                                                                <input type="radio" id="star-3" name="rating">
-                                                                                <div class="radio-box__state radio-box__state--primary">
-
-                                                                                    <label class="radio-box__label" for="star-3"></label></div>
-                                                                            </div>
-                                                                            <!--====== End - Radio Box ======-->
-                                                                        </td>
-                                                                        <td>
-
-                                                                            <!--====== Radio Box ======-->
-                                                                            <div class="radio-box">
-
-                                                                                <input type="radio" id="star-3.5" name="rating">
-                                                                                <div class="radio-box__state radio-box__state--primary">
-
-                                                                                    <label class="radio-box__label" for="star-3.5"></label></div>
-                                                                            </div>
-                                                                            <!--====== End - Radio Box ======-->
-                                                                        </td>
-                                                                        <td>
-
-                                                                            <!--====== Radio Box ======-->
-                                                                            <div class="radio-box">
-
-                                                                                <input type="radio" id="star-4" name="rating">
-                                                                                <div class="radio-box__state radio-box__state--primary">
-
-                                                                                    <label class="radio-box__label" for="star-4"></label></div>
-                                                                            </div>
-                                                                            <!--====== End - Radio Box ======-->
-                                                                        </td>
-                                                                        <td>
-
-                                                                            <!--====== Radio Box ======-->
-                                                                            <div class="radio-box">
-
-                                                                                <input type="radio" id="star-4.5" name="rating">
-                                                                                <div class="radio-box__state radio-box__state--primary">
-
-                                                                                    <label class="radio-box__label" for="star-4.5"></label></div>
-                                                                            </div>
-                                                                            <!--====== End - Radio Box ======-->
-                                                                        </td>
-                                                                        <td>
-
-                                                                            <!--====== Radio Box ======-->
-                                                                            <div class="radio-box">
-
-                                                                                <input type="radio" id="star-5" name="rating">
-                                                                                <div class="radio-box__state radio-box__state--primary">
-
-                                                                                    <label class="radio-box__label" for="star-5"></label></div>
-                                                                            </div>
-                                                                            <!--====== End - Radio Box ======-->
-                                                                        </td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
-                                                    <div class="rev-f2__group">
-                                                        <div class="u-s-m-b-15">
-
-                                                            <label class="gl-label" for="reviewer-text">YOUR REVIEW *</label><textarea class="text-area text-area--primary-style" id="reviewer-text"></textarea></div>
-                                                        <div>
-                                                            <p class="u-s-m-b-30">
-
-                                                                <label class="gl-label" for="reviewer-name">NAME *</label>
-
-                                                                <input class="input-text input-text--primary-style" type="text" id="reviewer-name"></p>
-                                                            <p class="u-s-m-b-30">
-
-                                                                <label class="gl-label" for="reviewer-email">EMAIL *</label>
-
-                                                                <input class="input-text input-text--primary-style" type="text" id="reviewer-email"></p>
-                                                        </div>
-                                                    </div>
-                                                    <div>
-
-                                                        <button class="btn btn--e-brand-shadow" type="submit">SUBMIT</button></div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--====== End - Tab 3 ======-->
                                 </div>
                             </div>
                         </div>
@@ -578,7 +218,7 @@
                 <div class="section__content">
                     <div class="container">
                         <div class="slider-fouc">
-                            <div class="owl-carousel product-slider" data-item="4">
+                            <div class="owl-carousel product-slider" data-item="4" id="same-type-product">
                                 <div class="u-s-m-b-30">
                                     <div class="product-o product-o--hover-on">
                                         <div class="product-o__wrap">
@@ -596,10 +236,7 @@
                                                         <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
                                                     <li>
 
-                                                        <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
-                                                    <li>
-
-                                                        <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i class="fas fa-envelope"></i></a></li>
+                                                        <a data-tooltip="tooltip" data-placement="top" title="Add to Wishlist" ><i class="fas fa-heart"></i></a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -611,9 +248,7 @@
                                         <span class="product-o__name">
 
                                             <a href="product-detail.html">Beats Bomb Wireless Headphone</a></span>
-                                        <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-
-                                            <span class="product-o__review">(20)</span></div>
+                                        
 
                                         <span class="product-o__price">$125.00
 
@@ -834,120 +469,270 @@
             <!--====== End - Section 1 ======-->
         </div>
         <!--====== End - App Content ======-->
+                </div>
+            </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="foot" runat="server">
     <script>
-        $(document).ready(function () {
-            getDetailProducts();
-            //getSelectImage();
+        const searchParams = new URLSearchParams(window.location.search);
+        const _id = searchParams.get('id');
+        const id_product = _id == null ? '' : _id;
+
+        var $jq = jQuery.noConflict();
+        $jq(document).ready(function () {
+            if (id_product == '') {
+                window.location = "Products.aspx";
+            }
+            else {
+                getInforProduct(id_product);
+                getImageZoom(id_product);
+            }
         });
-        // call api img product {id}
-        getImageProduct = (id) => {
-            let urlStr = "https://localhost:44344/api/GetImageProduct/" + id;
+
+        // ajax call api get infor a product 
+        getInforProduct = (id) => {
+            let urlStr = 'https://localhost:44344/api/SanPhams/' + id;
             $.ajax({
                 url: urlStr,
-                async: false,
                 success: function (response) {
-                    img = response.url;
+                    if (response == '') {
+                        window.location = "Products.aspx";
+                    }
+                    getData(response);
+                    getProductsSameType(response.id_danh_muc, response.id_thuong_hieu)
                 },
                 error: function (error) {
-                    console.error(error)
+                    console.error(error);
+                    window.location = "Products.aspx";
                 }
-            });
-            return img;
+            })
         }
-        //Hàm lấy id cho sản phẩm 
-        function getUrlParameter(sParam) {
-            var sPageURL = window.location.search.substring(1),
-                sURLVariables = sPageURL.split('?'),
-                sParameterName,
-                i;
+        getData = (obj) => {
+            $('#breadcrumb-name-product').text(obj.ten_san_pham);
+            $('#name-product').text(obj.ten_san_pham);
+            $('#price-discount').text(formatMoney(getDiscountPrice(obj.gia_san_pham, obj.phan_tram_khuyen_mai)) + ' VND');
+            $('#percent-discount').text('(' + obj.phan_tram_khuyen_mai + '% OFF');
+            $('#price-product').text(formatMoney(obj.gia_san_pham) + ' VND');
+            $('#num-product').text(obj.so_luong_ton_kho + ' in stock');
+            $('#short-description-product').text(getShortStr(obj.mo_ta_san_pham));
+            $('#buy-now').attr('onclick', `addProductToCart('` + obj.id_san_pham + `')`);
+            $('#add-to-wishlist').attr('onclick', `addProductToWishlist('` + obj.id_san_pham + `')`);
+            $(
+                `
+                    <tr>
+                        <td>Features</td>
+                        <td>`+ obj.tinh_nang_san_pham +`</td>
+                    </tr>
 
-            for (i = 0; i < sURLVariables.length; i++) {
-                sParameterName = sURLVariables[i].split('=');
+                `
+            ).appendTo('#table-description');
+            $(
+                `
+                    <tr>
+                        <td>Sex</td>
+                        <td>`+ obj.gioi_tinh + `</td>
+                    </tr>
 
-                if (sParameterName[0] === sParam) {
-                    return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+                `
+            ).appendTo('#table-description');
+            $(
+                `
+                    <tr>
+                        <td>Warranty (month)</td>
+                        <td>`+ obj.so_thang_bao_hanh + `</td>
+                    </tr>
+
+                `
+            ).appendTo('#table-description');
+            $('#description-image').attr('src', '../Uploads/AnhSP/' + getImageProduct(obj.id_san_pham));
+        }
+
+
+        getImageZoom = (id_sp) => {
+            let urlStr = `https://localhost:44344/api/ImgSanPhams?id_sp=` + id_sp;
+            $.ajax({
+                url: urlStr,
+                success: function (response) {
+
+                    let $imgZoomList = $('#pd-o-initiate-img')
+                    $imgZoomList.html('');
+
+                    let $imgThumbnailList = $('#pd-o-thumbnail-img')
+                    $imgThumbnailList.html('');
+
+                    $.each(response, function (_, item) {
+                        $(
+                            `
+                                <div class="pd-o-img-wrap" data-src="../Uploads/AnhSP/`+ item.url +`">
+                                <img class="u-img-fluid" src="../Uploads/AnhSP/`+ item.url + `" data-zoom-image="../Uploads/AnhSP/` + item.url +`" alt=""></div>
+                            `
+                        ).appendTo($imgZoomList);
+                        $(
+                            `
+                                <div>
+                                <img class="u-img-fluid" src="../Uploads/AnhSP/`+ item.url + `" alt=""></div>
+                            `
+                        ).appendTo($imgThumbnailList);
+
+                    })
+                    draw();
+                },
+                error: function (error) {
+                    console.error(error);
+
                 }
+            })
+
+        }
+        
+        // Product Detail Init
+        draw = () => {
+
+            var $productDetailElement = $('#pd-o-initiate-img');
+            var $productDetailElementThumbnail = $('#pd-o-thumbnail-img');
+            if ($productDetailElement.length && $productDetailElementThumbnail.length) {
+
+
+                var ELEVATE_ZOOM_OBJ = {
+                    borderSize: 1,
+                    autoWidth: true,
+                    zoomWindowWidth: 540,
+                    zoomWindowHeight: 540,
+                    zoomWindowOffetx: 10,
+                    borderColour: '#e9e9e9',
+                    cursor: 'pointer'
+                };
+                // Fires after first initialization
+                $productDetailElement.on('init', function () {
+                    $(this).closest('.slider-fouc').removeClass('slider-fouc');
+                });
+
+                $productDetailElement.slick({
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    infinite: false,
+                    arrows: false,
+                    dots: false,
+                    fade: true,
+                    asNavFor: $productDetailElementThumbnail
+                });
+                // Init elevate zoom plugin to the first image
+                $('#pd-o-initiate-img .slick-current img').elevateZoom(ELEVATE_ZOOM_OBJ);
+
+                // Fires before slide change
+                $productDetailElement.on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+                    // Get the next slide image
+                    var $img = $(slick.$slides[nextSlide]).find('img');
+                    // Remove old zoom elements
+                    $('.zoomWindowContainer,.zoomContainer').remove();
+                    // Reinit elevate zoom plugin to the next slide image
+                    $($img).elevateZoom(ELEVATE_ZOOM_OBJ);
+                });
+
+                // Init Lightgallery plugin
+                $productDetailElement.lightGallery({
+                    selector: '.pd-o-img-wrap',// lightgallery-core
+                    download: false,// lightgallery-core
+                    thumbnail: false,// Thumbnails
+                    autoplayControls: false,// Autoplay-plugin
+                    actualSize: false,// Zoom-plugin: Enable actual pixel icon
+                    hash: false, // Hash-plugin
+                    share: false// share-plugin
+                });
+                // Thumbnail images
+                // Fires after first initialization
+                $productDetailElementThumbnail.on('init', function () {
+                    $(this).closest('.slider-fouc').removeAttr('class');
+                });
+
+                $productDetailElementThumbnail.slick({
+                    slidesToShow: 4,
+                    slidesToScroll: 1,
+                    infinite: false,
+                    arrows: true,
+                    dots: false,
+                    focusOnSelect: true,
+                    asNavFor: $productDetailElement,
+                    prevArrow: '<div class="pt-prev"><i class="fas fa-angle-left"></i>',
+                    nextArrow: '<div class="pt-next"><i class="fas fa-angle-right"></i>',
+                    responsive: [
+                        {
+                            breakpoint: 1200,
+                            settings: {
+                                slidesToShow: 4
+                            }
+                        },
+                        {
+                            breakpoint: 992,
+                            settings: {
+                                slidesToShow: 3
+                            }
+                        },
+                        {
+                            breakpoint: 576,
+                            settings: {
+                                slidesToShow: 2
+                            }
+                        }
+                    ]
+                });
             }
         };
-        getProductDetailZoom = () => {
-            var $urlStr = "https://localhost:44344/api/GetImageProduct/" + id;
-            $.ajax({
-                url: $urlStr,
-                success: function (item) {
 
-                }
-            })
-        }
-        // ajax lấy ảnh cho phần chọn ảnh
-        getSelectImage = () => {
-            var id = getUrlParameter('id');
-            let urlStr = "https://localhost:44344/api/GetImageDetailProduct/" + id;
+
+
+        //
+        getProductsSameType = (id_dm, id_th) => {
+            let urlStr = `https://localhost:44344/api/GetProductsSameType?id_danh_muc=` + id_dm + `&id_thuong_hieu=` + id_th;
             $.ajax({
                 url: urlStr,
                 success: function (response) {
-                    let imgProductList = $('#pd-o-initiate')
-                    imgProductList.html('');
+                    let $sameTypeList = $('#same-type-product .owl-stage-outer .owl-stage')
+                    $sameTypeList.html('');
+
                     $.each(response, function (_, item) {
                         $(
                             `
-                               <div class="pd-o-img-wrap" data-src="../Uploads/AnhSP/`+ item.url + `">
-                                    <img class="u-img-fluid" src="../Uploads/AnhSP/`+ item.url + `" data-zoom-image="../Uploads/AnhSP/` + item.url + `" alt="">
-                               </div>
-                            `
-                        ).appendTo(imgProductList)
+                                <div class="owl-item active" style="width: 310px;"><div class="u-s-m-b-30">
+                                    <div class="product-o product-o--hover-on">
+                                        <div class="product-o__wrap">
 
+                                            <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
+
+                                                <img class="aspect__img" src="../Uploads/AnhSP/`+ getImageProduct(item.id_san_pham) + `" alt="">
+                                            </a>
+                                            <div class="product-o__action-wrap">
+                                                <ul class="product-o__action-list">
+                                                    <li>
+
+                                                        <a href="DetailProduct.aspx?id=${item.id_san_pham}" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="" data-original-title="Quick View"><i class="fas fa-search-plus"></i></a></li>
+                                                    <li>
+
+                                                        <a onclick="addProductToCart('`+ item.id_san_pham + `')" data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="" data-original-title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
+                                                    <li>
+
+                                                        <a onclick="addProductToWishlist('`+ item.id_san_pham + `')" data-tooltip="tooltip" data-placement="top" title="" data-original-title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <span class="product-o__category">
+
+                                            <a href="Products.aspx?id_danh_muc=${item.id_danh_muc}">` + getNameCategory(item.id_danh_muc) + `</a> <span>-</span> 
+                                            <a href="Products.aspx?id_thuong_hieu=${item.id_thuong_hieu}">` + getNameManufacturer(item.id_thuong_hieu) + `</a> <br>
+
+                                        <span class="product-o__name">
+
+                                            <a href="DetailProduct.aspx?id=${item.id_san_pham}">` + item.ten_san_pham + `</a></span>
+
+                                        <span class="product-o__price">`+ formatMoney(item.gia_san_pham) + ` VND
+
+                                            <span class="product-o__discount" style="color:red">`+ item.phan_tram_khuyen_mai + `%</span></span>
+                                    </div>
+                                </div></div>
+                            `
+                        ).appendTo($sameTypeList);
                     })
-                },
-                error: function (error) {
-                    console.error(error)
-                }
-            });
-
-            $.ajax({
-                url: urlStr,
-                success: function (response) {
-                    let imgProductListBt = $('#pd-o-thumbnail')
-                    imgProductListBt.html('');
-                    $.each(response, function (_, item) {
-                        $(
-                            `
-                               <div>
-                                    <img class="u-img-fluid" src="../Uploads/AnhSP/`+ item.url + `" alt="">
-                               </div>
-                            `
-                        ).appendTo(imgProductListBt)
-
-                    })
-                },
-                error: function (error) {
-                    console.error(error)
-                }
-            });
-        }
-        // ajax call api DetailProduct
-        getDetailProducts = () => {
-            var id = getUrlParameter('id');
-            let urlStr = "https://localhost:44344/api/SanPhams/" + id;
-            $.ajax({
-                url: urlStr,
-                success: function (detail) {
-                    $('#detailProduct .pd-detail__name').html(detail.ten_san_pham);
-                    $('#detailProduct .pd-detail__price').html(detail.gia_san_pham);
-                    $('#detailProduct .pd-detail__discount').html("(" + detail.phan_tram_khuyen_mai + "%OFF)");
-                    $('#detailProduct .pd-detail__stock').html(detail.so_luong_ton_kho + " in stock");
-                    $('#detailProduct .pd-detail__preview-desc').html(detail.mo_ta_san_pham);
-                    $("#pd-tab__decription").html(detail.mo_ta_san_pham);
-                    $("#pd-table gl-scroll").html(detail.tinh_nang_san_pham);// Fail
-                    let imagedecription = $('#image-DESCRIPTION')
-                    imagedecription.html('')
-                    $(
-                        `
-                            <img class="u-img-fluid" src="../Uploads/AnhSP/` + getImageProduct(detail.id_san_pham) + `" data-zoom-image="../Uploads/AnhSP/` + getImageProduct(detail.id_san_pham) + `" alt="">
-                        `
-                    ).appendTo(imagedecription)
-                    console.log(detail);
                 },
                 error: function (error) {
                     console.error(error)
@@ -955,43 +740,5 @@
             })
         }
 
-
     </script>
-    <!--====== Google Analytics: change UA-XXXXX-Y to be your site's ID ======-->
-    <script>
-        window.ga = function () {
-            ga.q.push(arguments)
-        };
-        ga.q = [];
-        ga.l = +new Date;
-        ga('create', 'UA-XXXXX-Y', 'auto');
-        ga('send', 'pageview')
-    </script>
-    <script src="https://www.google-analytics.com/analytics.js" async defer></script>
-
-    <!--====== Vendor Js ======-->
-    <script src="Assets/js/vendor.js"></script>
-
-    <!--====== jQuery Shopnav plugin ======-->
-    <script src="Assets/js/jquery.shopnav.js"></script>
-
-    <!--====== App ======-->
-    <script src="Assets/js/app.js"></script>
-
-    <!--====== Noscript ======-->
-    <noscript>
-        <div class="app-setting">
-            <div class="container">
-                <div class="row" >
-                    <div class="col-12">
-                        <div class="app-setting__wrap">
-                            <h1 class="app-setting__h1">JavaScript is disabled in your browser.</h1>
-
-                            <span class="app-setting__text">Please enable JavaScript in your browser or upgrade to a JavaScript-capable browser.</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </noscript>
 </asp:Content>

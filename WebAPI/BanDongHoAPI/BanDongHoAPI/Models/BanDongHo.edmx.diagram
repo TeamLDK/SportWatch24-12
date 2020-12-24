@@ -4,20 +4,23 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d5b8bd350f0341efa898b1fd47183aba" Name="Diagram1">
-        <EntityTypeShape EntityType="BanDongHoModel.Admin" Width="1.5" PointX="7.75" PointY="2" IsExpanded="true" />
+      <Diagram DiagramId="11fc9fe2f6734cad9c5d577163b91b7e" Name="Diagram1" ZoomLevel="55">
+        <EntityTypeShape EntityType="BanDongHoModel.Admin" Width="1.5" PointX="7.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BanDongHoModel.Blog" Width="1.5" PointX="10" PointY="2.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BanDongHoModel.ChiTietHoaDon" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="BanDongHoModel.DangKiNhanTin" Width="1.5" PointX="7.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BanDongHoModel.DangKiNhanTin" Width="1.5" PointX="7.75" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="BanDongHoModel.DanhMucSanPham" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BanDongHoModel.GioHang" Width="1.5" PointX="5.25" PointY="2.25" IsExpanded="true" />
         <EntityTypeShape EntityType="BanDongHoModel.HoaDon" Width="1.5" PointX="3" PointY="14" IsExpanded="true" />
-        <EntityTypeShape EntityType="BanDongHoModel.ImgGiaoDien" Width="1.5" PointX="7.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="BanDongHoModel.ImgGiaoDien" Width="1.5" PointX="7.75" PointY="9" IsExpanded="true" />
         <EntityTypeShape EntityType="BanDongHoModel.ImgSanPham" Width="1.5" PointX="5.25" PointY="10.625" IsExpanded="true" />
         <EntityTypeShape EntityType="BanDongHoModel.KhachHang" Width="1.5" PointX="3" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BanDongHoModel.SanPham" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="BanDongHoModel.sysdiagrams" Width="1.5" PointX="9.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="BanDongHoModel.sysdiagrams" Width="1.5" PointX="9.75" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="BanDongHoModel.ThuongHieu" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="BanDongHoModel.VanChuyen" Width="1.5" PointX="0.75" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="BanDongHoModel.Wishlist" Width="1.5" PointX="9.75" PointY="9" IsExpanded="true" />
+        <AssociationConnector Association="BanDongHoModel.FK__Blog__username__5FB337D6" ManuallyRouted="false" />
         <AssociationConnector Association="BanDongHoModel.FK__ChiTietHo__id_ho__29572725" ManuallyRouted="false" />
         <AssociationConnector Association="BanDongHoModel.FK__ChiTietHo__id_sa__2A4B4B5E" ManuallyRouted="false" />
         <AssociationConnector Association="BanDongHoModel.FK__DanhMucSa__id_da__108B795B" ManuallyRouted="false" />
@@ -29,8 +32,6 @@
         <AssociationConnector Association="BanDongHoModel.FK__HoaDon__id_kh__267ABA7A" ManuallyRouted="false" />
         <AssociationConnector Association="BanDongHoModel.FK__ImgSanPha__id_sa__1DE57479" ManuallyRouted="false" />
         <AssociationConnector Association="BanDongHoModel.FK__SanPham__id_thuo__1B0907CE" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="BanDongHoModel.Blog" Width="1.5" PointX="10" PointY="5" />
-        <AssociationConnector Association="BanDongHoModel.FK__Blog__username__5FB337D6" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

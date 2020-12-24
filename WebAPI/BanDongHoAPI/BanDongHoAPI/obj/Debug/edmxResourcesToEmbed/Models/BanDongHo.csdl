@@ -10,7 +10,19 @@
     <Property Name="phone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
     <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Blog" Relationship="BanDongHoModel.FK__Blog__username__5FB337D6" FromRole="Admin" ToRole="Blog" />
+    <NavigationProperty Name="Blog" Relationship="Self.FK__Blog__username__5FB337D6" FromRole="Admin" ToRole="Blog" />
+  </EntityType>
+  <EntityType Name="Blog">
+    <Key>
+      <PropertyRef Name="id_blog" />
+    </Key>
+    <Property Name="id_blog" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="time" Type="DateTime" Precision="0" />
+    <Property Name="title" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Admin" Relationship="Self.FK__Blog__username__5FB337D6" FromRole="Blog" ToRole="Admin" />
   </EntityType>
   <EntityType Name="ChiTietHoaDon">
     <Key>
@@ -158,6 +170,26 @@
     <Property Name="phi_van_chuyen" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
     <NavigationProperty Name="HoaDon" Relationship="Self.FK__HoaDon__id_don_v__25869641" FromRole="VanChuyen" ToRole="HoaDon" />
   </EntityType>
+  <EntityType Name="Wishlist">
+    <Key>
+      <PropertyRef Name="id_kh" />
+      <PropertyRef Name="id_san_pham" />
+    </Key>
+    <Property Name="id_kh" Type="Int32" Nullable="false" />
+    <Property Name="id_san_pham" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Blog__username__5FB337D6">
+    <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
+    <End Role="Blog" Type="Self.Blog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Admin">
+        <PropertyRef Name="username" />
+      </Principal>
+      <Dependent Role="Blog">
+        <PropertyRef Name="username" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__ChiTietHo__id_ho__29572725">
     <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
     <End Role="ChiTietHoaDon" Type="Self.ChiTietHoaDon" Multiplicity="*" />
@@ -292,6 +324,7 @@
   </Association>
   <EntityContainer Name="BanDongHoEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Admin" EntityType="Self.Admin" />
+    <EntitySet Name="Blog" EntityType="Self.Blog" />
     <EntitySet Name="ChiTietHoaDon" EntityType="Self.ChiTietHoaDon" />
     <EntitySet Name="DangKiNhanTin" EntityType="Self.DangKiNhanTin" />
     <EntitySet Name="DanhMucSanPham" EntityType="Self.DanhMucSanPham" />
@@ -304,6 +337,11 @@
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <EntitySet Name="ThuongHieu" EntityType="Self.ThuongHieu" />
     <EntitySet Name="VanChuyen" EntityType="Self.VanChuyen" />
+    <EntitySet Name="Wishlist" EntityType="Self.Wishlist" />
+    <AssociationSet Name="FK__Blog__username__5FB337D6" Association="Self.FK__Blog__username__5FB337D6">
+      <End Role="Admin" EntitySet="Admin" />
+      <End Role="Blog" EntitySet="Blog" />
+    </AssociationSet>
     <AssociationSet Name="FK__ChiTietHo__id_ho__29572725" Association="Self.FK__ChiTietHo__id_ho__29572725">
       <End Role="HoaDon" EntitySet="HoaDon" />
       <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDon" />
@@ -348,34 +386,5 @@
       <End Role="ThuongHieu" EntitySet="ThuongHieu" />
       <End Role="SanPham" EntitySet="SanPham" />
     </AssociationSet>
-    <EntitySet Name="Blog" EntityType="BanDongHoModel.Blog" />
-    <AssociationSet Name="FK__Blog__username__5FB337D6" Association="BanDongHoModel.FK__Blog__username__5FB337D6">
-      <End Role="Admin" EntitySet="Admin" />
-      <End Role="Blog" EntitySet="Blog" />
-    </AssociationSet>
   </EntityContainer>
-  <EntityType Name="Blog">
-    <Key>
-      <PropertyRef Name="id_blog" />
-    </Key>
-    <Property Name="id_blog" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="time" Type="DateTime" Precision="0" />
-    <Property Name="title" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
-    <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Admin" Relationship="BanDongHoModel.FK__Blog__username__5FB337D6" FromRole="Blog" ToRole="Admin" />
-  </EntityType>
-  <Association Name="FK__Blog__username__5FB337D6">
-    <End Type="BanDongHoModel.Admin" Role="Admin" Multiplicity="0..1" />
-    <End Type="BanDongHoModel.Blog" Role="Blog" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Admin">
-        <PropertyRef Name="username" />
-      </Principal>
-      <Dependent Role="Blog">
-        <PropertyRef Name="username" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
 </Schema>

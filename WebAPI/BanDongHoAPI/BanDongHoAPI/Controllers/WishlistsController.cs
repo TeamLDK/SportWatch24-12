@@ -12,41 +12,56 @@ using BanDongHoAPI.Models;
 
 namespace BanDongHoAPI.Controllers
 {
-    public class GioHangsController : ApiController
+    public class WishlistsController : ApiController
     {
         private BanDongHoEntities db = new BanDongHoEntities();
-        public GioHangsController()
+
+        public WishlistsController()
         {
             // Add the following code
             // problem will be solved
             db.Configuration.ProxyCreationEnabled = false;
         }
-
-
-        // GET: api/GioHang
-        public IEnumerable<GioHang> GetGioHang(int id_kh)
+        // GET: api/Wishlists
+        public IQueryable<Wishlist> GetWishlist()
         {
-            List<GioHang> result = db.GioHang.Where(x => x.id_kh == id_kh).ToList();
-            return result.ToList();
+            return db.Wishlist;
         }
 
+        // GET: api/Wishlists
+        public IEnumerable<Wishlist> GetWihslist(int id_kh)
+        {
+            return db.Wishlist.Where(x => x.id_kh == id_kh).ToList();
+        }
 
-        
+        // GET: api/Wishlists/5
+        [ResponseType(typeof(Wishlist))]
+        public IHttpActionResult GetWishlist(int id)
+        {
+            Wishlist wishlist = db.Wishlist.Find(id);
+            if (wishlist == null)
+            {
+                return NotFound();
+            }
 
-        // PUT: api/GioHangs/5
+            return Ok(wishlist);
+        }
+
+        // PUT: api/Wishlists/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutGioHang(int id_kh, string id_sp, GioHang gioHang)
+        public IHttpActionResult PutWishlist(int id, Wishlist wishlist)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            GioHang temp = db.GioHang.FirstOrDefault(x => x.id_kh == id_kh && x.id_san_pham == id_sp);
-            if (temp == null)
+
+            if (id != wishlist.id_kh)
             {
                 return BadRequest();
             }
-            temp.so_luong = gioHang.so_luong;
+
+            db.Entry(wishlist).State = EntityState.Modified;
 
             try
             {
@@ -54,7 +69,7 @@ namespace BanDongHoAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!GioHangExists(id_kh))
+                if (!WishlistExists(id))
                 {
                     return NotFound();
                 }
@@ -67,16 +82,16 @@ namespace BanDongHoAPI.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/GioHangs
-        [ResponseType(typeof(GioHang))]
-        public IHttpActionResult PostGioHang(GioHang gioHang)
+        // POST: api/Wishlists
+        [ResponseType(typeof(Wishlist))]
+        public IHttpActionResult PostWishlist(Wishlist wishlist)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.GioHang.Add(gioHang);
+            db.Wishlist.Add(wishlist);
 
             try
             {
@@ -84,7 +99,7 @@ namespace BanDongHoAPI.Controllers
             }
             catch (DbUpdateException)
             {
-                if (GioHangExists(gioHang.id_kh))
+                if (WishlistExists(wishlist.id_kh))
                 {
                     return Conflict();
                 }
@@ -94,23 +109,23 @@ namespace BanDongHoAPI.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = gioHang.id_kh }, gioHang);
+            return CreatedAtRoute("DefaultApi", new { id = wishlist.id_kh }, wishlist);
         }
 
-        // DELETE: api/GioHang/5
-        [ResponseType(typeof(GioHang))]
-        public IHttpActionResult DeleteKhachHang(int id_kh, string id_product)
+        // DELETE: api/Wishlists/5
+        [ResponseType(typeof(Wishlist))]
+        public IHttpActionResult DeleteWishlist(int id)
         {
-            GioHang gioHang = db.GioHang.Find(id_kh, id_product);
-            if (gioHang == null)
+            Wishlist wishlist = db.Wishlist.Find(id);
+            if (wishlist == null)
             {
                 return NotFound();
             }
 
-            db.GioHang.Remove(gioHang);
+            db.Wishlist.Remove(wishlist);
             db.SaveChanges();
 
-            return Ok(gioHang);
+            return Ok(wishlist);
         }
 
         protected override void Dispose(bool disposing)
@@ -122,9 +137,9 @@ namespace BanDongHoAPI.Controllers
             base.Dispose(disposing);
         }
 
-        private bool GioHangExists(int id)
+        private bool WishlistExists(int id)
         {
-            return db.GioHang.Count(e => e.id_kh == id) > 0;
+            return db.Wishlist.Count(e => e.id_kh == id) > 0;
         }
     }
 }

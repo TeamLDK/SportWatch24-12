@@ -26,6 +26,7 @@ namespace BanDongHoAPI.Models
         }
     
         public virtual DbSet<Admin> Admin { get; set; }
+        public virtual DbSet<Blog> Blog { get; set; }
         public virtual DbSet<ChiTietHoaDon> ChiTietHoaDon { get; set; }
         public virtual DbSet<DangKiNhanTin> DangKiNhanTin { get; set; }
         public virtual DbSet<DanhMucSanPham> DanhMucSanPham { get; set; }
@@ -38,6 +39,6 @@ namespace BanDongHoAPI.Models
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<ThuongHieu> ThuongHieu { get; set; }
         public virtual DbSet<VanChuyen> VanChuyen { get; set; }
-        public virtual DbSet<Blog> Blog { get; set; }
+        public virtual DbSet<Wishlist> Wishlist { get; set; }
     }
 }

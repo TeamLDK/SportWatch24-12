@@ -74,7 +74,7 @@
                 </div>
             </div>
         </div>
-    </form>
+    </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="foot" runat="server">
     <script>

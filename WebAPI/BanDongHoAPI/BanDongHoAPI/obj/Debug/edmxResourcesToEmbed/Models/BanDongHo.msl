@@ -13,6 +13,18 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Blog">
+      <EntityTypeMapping TypeName="BanDongHoModel.Blog">
+        <MappingFragment StoreEntitySet="Blog">
+          <ScalarProperty Name="id_blog" ColumnName="id_blog" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="time" ColumnName="time" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="content" ColumnName="content" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="ChiTietHoaDon">
       <EntityTypeMapping TypeName="BanDongHoModel.ChiTietHoaDon">
         <MappingFragment StoreEntitySet="ChiTietHoaDon">
@@ -147,15 +159,11 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Blog">
-      <EntityTypeMapping TypeName="BanDongHoModel.Blog">
-        <MappingFragment StoreEntitySet="Blog">
-          <ScalarProperty Name="content" ColumnName="content" />
-          <ScalarProperty Name="image" ColumnName="image" />
-          <ScalarProperty Name="title" ColumnName="title" />
-          <ScalarProperty Name="time" ColumnName="time" />
-          <ScalarProperty Name="username" ColumnName="username" />
-          <ScalarProperty Name="id_blog" ColumnName="id_blog" />
+    <EntitySetMapping Name="Wishlist">
+      <EntityTypeMapping TypeName="BanDongHoModel.Wishlist">
+        <MappingFragment StoreEntitySet="Wishlist">
+          <ScalarProperty Name="id_kh" ColumnName="id_kh" />
+          <ScalarProperty Name="id_san_pham" ColumnName="id_san_pham" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

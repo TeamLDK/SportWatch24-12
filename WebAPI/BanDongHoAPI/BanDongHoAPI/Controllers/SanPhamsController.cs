@@ -27,6 +27,114 @@ namespace BanDongHoAPI.Controllers
             return db.SanPham.ToList();
         }
 
+        // GET: api/SanPhams with id_danh_muc, id_thuong_hieu
+        public IQueryable<SanPham> GetSanPham(string id_danh_muc, string id_thuong_hieu, string min, string max)
+        {
+
+            if (id_danh_muc != null && id_thuong_hieu != null && min != null && max != null)
+            {
+                int iDanhMuc = Convert.ToInt32(id_danh_muc);
+                int iThuongHieu = Convert.ToInt32(id_thuong_hieu);
+                int iMin = Convert.ToInt32(min);
+                int iMax = Convert.ToInt32(max);
+                return db.SanPham.Where(x => x.id_danh_muc == iDanhMuc &&
+                                        x.id_thuong_hieu == iThuongHieu &&
+                                        x.gia_san_pham >= iMin && 
+                                        x.gia_san_pham <= iMax);
+            }
+            if (id_danh_muc != null && id_thuong_hieu != null && min == null && max == null)
+            {
+                int iDanhMuc = Convert.ToInt32(id_danh_muc);
+                int iThuongHieu = Convert.ToInt32(id_thuong_hieu);
+                return db.SanPham.Where(x => x.id_danh_muc == iDanhMuc &&
+                                        x.id_thuong_hieu == iThuongHieu);
+            }
+            else if (id_danh_muc != null && id_thuong_hieu == null && min == null && max == null)
+            {
+                int iDanhMuc = Convert.ToInt32(id_danh_muc);
+                return db.SanPham.Where(x => x.id_danh_muc == iDanhMuc);
+            }
+            else if (id_danh_muc == null && id_thuong_hieu != null && min == null && max == null)
+            {
+                int iThuongHieu = Convert.ToInt32(id_thuong_hieu);
+                return db.SanPham.Where(x => x.id_thuong_hieu == iThuongHieu);
+            }
+            else if (id_danh_muc == null && id_thuong_hieu == null && min != null && max == null)
+            {
+                int iMin = Convert.ToInt32(min);
+                return db.SanPham.Where(x => x.gia_san_pham >= iMin);
+            }
+            else if (id_danh_muc == null && id_thuong_hieu == null && min == null && max != null)
+            {
+                int iMax = Convert.ToInt32(min);
+                return db.SanPham.Where(x => x.gia_san_pham <= iMax);
+            }
+            else if (id_danh_muc != null && id_thuong_hieu != null && min == null && max != null)
+            {
+                int iDanhMuc = Convert.ToInt32(id_danh_muc);
+                int iThuongHieu = Convert.ToInt32(id_thuong_hieu);
+                return db.SanPham.Where(x => x.id_danh_muc == iDanhMuc &&
+                                        x.id_thuong_hieu == iThuongHieu);
+            }
+            else if (id_danh_muc == null && id_thuong_hieu == null && min != null && max != null)
+            {
+                int iMin = Convert.ToInt32(min);
+                int iMax = Convert.ToInt32(max);
+                return db.SanPham.Where(x => x.gia_san_pham >= iMin &&
+                                        x.gia_san_pham <= iMax);
+            }
+            else if (id_danh_muc != null && id_thuong_hieu == null && min != null && max == null)//
+            {
+                int iDanhMuc = Convert.ToInt32(id_danh_muc);
+                int iMin = Convert.ToInt32(min);
+                return db.SanPham.Where(x => x.gia_san_pham >= iMin &&
+                                        x.id_danh_muc == iDanhMuc);
+            }
+            else if (id_danh_muc != null && id_thuong_hieu == null && min == null && max != null)
+            {
+                int iDanhMuc = Convert.ToInt32(id_danh_muc);
+                int iMax = Convert.ToInt32(max);
+                return db.SanPham.Where(x => x.id_danh_muc == iDanhMuc &&
+                                        x.gia_san_pham <= iMax);
+            }
+            else if (id_danh_muc == null && id_thuong_hieu != null && min != null && max == null)
+            {
+                int iThuongHieu = Convert.ToInt32(id_thuong_hieu);
+                int iMin = Convert.ToInt32(min);
+                return db.SanPham.Where(x => x.gia_san_pham >= iMin &&
+                                        x.id_thuong_hieu == iThuongHieu);
+            }
+            else if (id_danh_muc == null && id_thuong_hieu != null && min == null && max != null)
+            {
+                int iThuongHieu = Convert.ToInt32(id_thuong_hieu);
+                int iMax = Convert.ToInt32(max);
+                return db.SanPham.Where(x => x.id_thuong_hieu == iThuongHieu &&
+                                        x.gia_san_pham <= iMax);
+            }
+            if (id_danh_muc != null && id_thuong_hieu == null && min != null && max != null)
+            {
+                int iDanhMuc = Convert.ToInt32(id_danh_muc);
+                int iMin = Convert.ToInt32(min);
+                int iMax = Convert.ToInt32(max);
+                return db.SanPham.Where(x => x.id_danh_muc == iDanhMuc &&
+                                        x.gia_san_pham >= iMin &&
+                                        x.gia_san_pham <= iMax);
+            }
+            if (id_danh_muc == null && id_thuong_hieu != null && min != null && max != null)
+            {
+                int iThuongHieu = Convert.ToInt32(id_thuong_hieu);
+                int iMin = Convert.ToInt32(min);
+                int iMax = Convert.ToInt32(max);
+                return db.SanPham.Where(x => x.id_thuong_hieu == iThuongHieu &&
+                                        x.gia_san_pham >= iMin &&
+                                        x.gia_san_pham <= iMax);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         // GET: api/SanPhams/5
         [ResponseType(typeof(SanPham))]
         public IHttpActionResult GetSanPham(string id)

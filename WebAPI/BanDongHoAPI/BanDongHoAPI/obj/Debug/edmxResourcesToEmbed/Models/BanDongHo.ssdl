@@ -146,6 +146,14 @@
     <Property Name="email_don_vi_van_chuyen" Type="varchar" MaxLength="100" />
     <Property Name="phi_van_chuyen" Type="money" Nullable="false" />
   </EntityType>
+  <EntityType Name="Wishlist">
+    <Key>
+      <PropertyRef Name="id_kh" />
+      <PropertyRef Name="id_san_pham" />
+    </Key>
+    <Property Name="id_kh" Type="int" Nullable="false" />
+    <Property Name="id_san_pham" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
   <Association Name="FK__Blog__username__5FB337D6">
     <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
     <End Role="Blog" Type="Self.Blog" Multiplicity="*" />
@@ -305,6 +313,7 @@
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ThuongHieu" EntityType="Self.ThuongHieu" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="VanChuyen" EntityType="Self.VanChuyen" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Wishlist" EntityType="Self.Wishlist" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK__Blog__username__5FB337D6" Association="Self.FK__Blog__username__5FB337D6">
       <End Role="Admin" EntitySet="Admin" />
       <End Role="Blog" EntitySet="Blog" />
