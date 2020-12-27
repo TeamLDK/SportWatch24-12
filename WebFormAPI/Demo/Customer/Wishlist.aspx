@@ -51,116 +51,21 @@
             <div class="section__content">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="col-lg-12 col-md-12 col-sm-12" id="wishList">
 
                             <!--====== Wishlist Product ======-->
-                            <div class="w-r u-s-m-b-30">
-                                <div class="w-r__container">
-                                    <div class="w-r__wrap-1">
-                                        <div class="w-r__img-wrap">
 
-                                            <img class="u-img-fluid" src="images/product/electronic/product3.jpg" alt=""></div>
-                                        <div class="w-r__info">
-
-                                            <span class="w-r__name">
-
-                                                <a href="product-detail.html">Yellow Wireless Headphone</a></span>
-
-                                            <span class="w-r__category">
-
-                                                <a href="shop-side-version-2.html">Electronics</a></span>
-
-                                            <span class="w-r__price">$125.00
-
-                                                <span class="w-r__discount">$160.00</span></span></div>
-                                    </div>
-                                    <div class="w-r__wrap-2">
-
-                                        <a class="w-r__link btn--e-brand-b-2" data-modal="modal" data-modal-id="#add-to-cart">ADD TO CART</a>
-
-                                        <a class="w-r__link btn--e-transparent-platinum-b-2" href="product-detail.html">VIEW</a>
-
-                                        <a class="w-r__link btn--e-transparent-platinum-b-2" href="#">REMOVE</a></div>
-                                </div>
-                            </div>
-                            <!--====== End - Wishlist Product ======-->
-
-
-                            <!--====== Wishlist Product ======-->
-                            <div class="w-r u-s-m-b-30">
-                                <div class="w-r__container">
-                                    <div class="w-r__wrap-1">
-                                        <div class="w-r__img-wrap">
-
-                                            <img class="u-img-fluid" src="images/product/women/product8.jpg" alt=""></div>
-                                        <div class="w-r__info">
-
-                                            <span class="w-r__name">
-
-                                                <a href="product-detail.html">New Dress D Nice Elegant</a></span>
-
-                                            <span class="w-r__category">
-
-                                                <a href="shop-side-version-2.html">Women Clothing</a></span>
-
-                                            <span class="w-r__price">$125.00
-
-                                                <span class="w-r__discount">$160.00</span></span></div>
-                                    </div>
-                                    <div class="w-r__wrap-2">
-
-                                        <a class="w-r__link btn--e-brand-b-2" data-modal="modal" data-modal-id="#add-to-cart">ADD TO CART</a>
-
-                                        <a class="w-r__link btn--e-transparent-platinum-b-2" href="product-detail.html">VIEW</a>
-
-                                        <a class="w-r__link btn--e-transparent-platinum-b-2" href="#">REMOVE</a></div>
-                                </div>
-                            </div>
-                            <!--====== End - Wishlist Product ======-->
-
-
-                            <!--====== Wishlist Product ======-->
-                            <div class="w-r u-s-m-b-30">
-                                <div class="w-r__container">
-                                    <div class="w-r__wrap-1">
-                                        <div class="w-r__img-wrap">
-
-                                            <img class="u-img-fluid" src="images/product/men/product8.jpg" alt=""></div>
-                                        <div class="w-r__info">
-
-                                            <span class="w-r__name">
-
-                                                <a href="product-detail.html">New Fashion D Nice Elegant</a></span>
-
-                                            <span class="w-r__category">
-
-                                                <a href="shop-side-version-2.html">Men Clothing</a></span>
-
-                                            <span class="w-r__price">$125.00
-
-                                                <span class="w-r__discount">$160.00</span></span></div>
-                                    </div>
-                                    <div class="w-r__wrap-2">
-
-                                        <a class="w-r__link btn--e-brand-b-2" data-modal="modal" data-modal-id="#add-to-cart">ADD TO CART</a>
-
-                                        <a class="w-r__link btn--e-transparent-platinum-b-2" href="product-detail.html">VIEW</a>
-
-                                        <a class="w-r__link btn--e-transparent-platinum-b-2" href="#">REMOVE</a></div>
-                                </div>
-                            </div>
-                            <!--====== End - Wishlist Product ======-->
                         </div>
                         <div class="col-lg-12">
                             <div class="route-box">
                                 <div class="route-box__g">
 
-                                    <a class="route-box__link" href="shop-side-version-2.html"><i class="fas fa-long-arrow-alt-left"></i>
+                                    <a class="route-box__link" href="Index.aspx"><i class="fas fa-long-arrow-alt-left"></i>
 
                                         <span>CONTINUE SHOPPING</span></a></div>
-                                <div class="route-box__g">
+                                <div class="route-box__g" onclick="clearWishlist()">
 
-                                    <a class="route-box__link" href="wishlist.html"><i class="fas fa-trash"></i>
+                                    <a class="route-box__link" href="#"><i class="fas fa-trash"></i>
 
                                         <span>CLEAR WISHLIST</span></a></div>
                             </div>
@@ -175,4 +80,86 @@
     <!--====== End - App Content ======-->
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="foot" runat="server">
+    <script>
+        $(document).ready(function () {
+            let item = localStorage.getItem('inforUser');
+            if (item != null) {
+                getWishList(item);
+            }
+        });
+        getWishList = (id_kh) => {
+            let urlStr = `https://localhost:44344/api/Wishlists?id_kh=` + id_kh;
+            $.ajax({
+                url: urlStr,
+                success: function (response) {
+                    let wishL = $('#wishList');
+                    wishL.html('');
+                    let gia = 0;
+                    let tinh_gia = 0;
+                    let gia_KM = 0;
+                    $.each(response, function (_, item) {
+                        let product = getSigleProduct(item.id_san_pham);
+                        gia = formatMoney(parseFloat(product.gia_san_pham));
+                        tinh_gia = parseFloat(product.gia_san_pham) - (parseFloat(product.gia_san_pham) / 100 * parseFloat(product.phan_tram_khuyen_mai));
+                        gia_KM = formatMoney(tinh_gia);
+                        $(
+                            `
+                                <div class="w-r u-s-m-b-30">
+                                <div class="w-r__container">
+                                    <div class="w-r__wrap-1">
+                                        <div class="w-r__img-wrap">
+
+                                            <img class="u-img-fluid" src="../Uploads/AnhSP/`+ getImageProduct(product.id_san_pham) + `" alt=""></div>
+                                        <div class="w-r__info">
+
+                                            <span class="w-r__name">
+
+                                                <a href="DetailProduct.aspx?id=${item.id_san_pham}">`+ product.ten_san_pham +`</a></span>
+
+                                            <span class="w-r__category">
+
+                                                <a href="Products.aspx?id_danh_muc=${product.id_danh_muc}">` + getNameCategory(product.id_danh_muc) + `</a> <span>-</span> 
+                                                    <a href="Products.aspx?id_thuong_hieu=${product.id_thuong_hieu}">` + getNameManufacturer(product.id_thuong_hieu) + `</a>
+
+                                            <span class="w-r__price">`+ gia_KM+` VND
+
+                                                <span class="w-r__discount">`+ gia+` VND</span></span></div>
+                                    </div>
+                                    <div class="w-r__wrap-2">
+
+                                        <a class="w-r__link btn--e-brand-b-2" data-modal="modal" data-modal-id="#add-to-cart" onclick="addProductToCart('`+ item.id_san_pham+`')">ADD TO CART</a>
+
+                                        <a class="w-r__link btn--e-transparent-platinum-b-2" href="DetailProduct.aspx?id=${item.id_san_pham}">VIEW</a>
+
+                                        <a class="w-r__link btn--e-transparent-platinum-b-2" onClick="deleteProductOnWishlist('`+ id_kh +`','`+item.id_san_pham+`')">REMOVE</a></div>
+                                </div>
+                            </div>
+                            `
+                        ).appendTo(wishL);
+                    })
+                },
+                error: function (error) {
+                    alert('Lay wishlist that bai');
+                    console.error(error)
+                }
+            });
+        }
+
+        clearWishlist = () => {
+            let id_kh = localStorage.getItem('inforUser');
+            if (id_kh == null) return;
+            let urlStr = `https://localhost:44344/api/Wishlists?id_kh=` + id_kh;
+            $.ajax({
+                type: 'DELETE',
+                url: urlStr,
+                crossDomain: true,
+                success: function (response) {
+                    document.location.reload();
+                },
+                error: function (error) {
+                    console.error(error)
+                }
+            });
+        }
+    </script>
 </asp:Content>

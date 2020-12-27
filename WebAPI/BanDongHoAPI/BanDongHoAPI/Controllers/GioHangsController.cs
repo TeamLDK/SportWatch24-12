@@ -64,7 +64,7 @@ namespace BanDongHoAPI.Controllers
                 }
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok(temp);
         }
 
         // POST: api/GioHangs
@@ -98,19 +98,41 @@ namespace BanDongHoAPI.Controllers
         }
 
         // DELETE: api/GioHang/5
+        [HttpDelete]
         [ResponseType(typeof(GioHang))]
         public IHttpActionResult DeleteKhachHang(int id_kh, string id_product)
         {
-            GioHang gioHang = db.GioHang.Find(id_kh, id_product);
-            if (gioHang == null)
+            
+            if (id_product == null)
             {
-                return NotFound();
+                if(id_kh == 0)
+                {
+                    return NotFound();
+                }
+                var ls = db.GioHang.Where(x => x.id_kh == id_kh);
+                db.GioHang.RemoveRange(ls);
+
+                db.SaveChanges();
+
+                return Ok(ls);
+            }
+            else
+            {
+                GioHang gioHang;
+                gioHang = db.GioHang.FirstOrDefault(x => x.id_kh == id_kh && x.id_san_pham == id_product);
+                if (gioHang == null)
+                {
+                    return NotFound();
+                }
+
+                db.GioHang.Remove(gioHang);
+                db.SaveChanges();
+
+                return Ok(gioHang);
             }
 
-            db.GioHang.Remove(gioHang);
-            db.SaveChanges();
 
-            return Ok(gioHang);
+            
         }
 
         protected override void Dispose(bool disposing)

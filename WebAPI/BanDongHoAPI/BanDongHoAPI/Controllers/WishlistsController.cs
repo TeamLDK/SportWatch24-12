@@ -114,9 +114,9 @@ namespace BanDongHoAPI.Controllers
 
         // DELETE: api/Wishlists/5
         [ResponseType(typeof(Wishlist))]
-        public IHttpActionResult DeleteWishlist(int id)
+        public IHttpActionResult DeleteWishlist(int id_kh, string id_sp)
         {
-            Wishlist wishlist = db.Wishlist.Find(id);
+            Wishlist wishlist = db.Wishlist.FirstOrDefault(x => x.id_kh == id_kh && x.id_san_pham == id_sp);
             if (wishlist == null)
             {
                 return NotFound();
@@ -126,6 +126,24 @@ namespace BanDongHoAPI.Controllers
             db.SaveChanges();
 
             return Ok(wishlist);
+        }
+
+
+        // DELETE: api/Wishlists/5 ALL
+        [ResponseType(typeof(Wishlist))]
+        public IHttpActionResult DeleteWishlist(string id_kh)
+        {
+
+            if (id_kh == null)
+            {
+                return NotFound();
+            }
+            int iID = Convert.ToInt32(id_kh);
+            var ls = db.Wishlist.Where(x => x.id_kh == iID);
+            db.Wishlist.RemoveRange(db.Wishlist.Where(x => x.id_kh == iID));
+            db.SaveChanges();
+
+            return Ok(ls);
         }
 
         protected override void Dispose(bool disposing)

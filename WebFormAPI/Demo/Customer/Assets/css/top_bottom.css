@@ -1,0 +1,355 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial;
+    font-size: 80%;
+    color: white;
+    letter-spacing: 0.5px;
+}
+.Top{
+    width: 100%;
+    height: 150px;
+}
+.Top_Header{
+    width: 100%;
+    height: 20%;
+    background-color:#0A0A0A ;
+    display: flex; 
+}
+.Top_Left{
+    width: 68%;
+    display: flex;
+}
+.Top_Icon1{
+    padding-left: 9%;
+    display: flex;
+}
+.Top_Icon1 a {
+    margin-top: 10%;
+}
+.Top_Icon1 a i{
+    width: 20px;
+    height: 20px;
+    margin: 15% ;
+    color: rgb(255, 255, 255);
+}
+.Top_Icon1 a i:hover{
+    color: rgba(255, 0, 0, 0.507);
+}
+.Top_Icon2{
+    width: 60%;
+    display: flex;
+}
+.Icon2{
+    width: 30px;
+    padding-left: 15px;
+    padding-top:5%;
+}
+#Shop{
+    padding-top: 2%;
+    color: white;
+}
+.Top_Right{
+    width: 14%;
+    display: flex;
+}
+.Top_Icon3{
+    width: 100%;
+    padding-top: 4%;
+    display: flex;
+}
+.Icon3_div{
+    margin: 2% 2%;
+}
+.Icon3_a{
+    margin-top: 10px;
+    color: white;
+    text-decoration: none;
+}
+.Icon3_chu{
+    margin-top: 3%;
+}
+.Top_Icon3 .Icon3_chu:hover{
+    margin-top: 2%;
+}
+.Top_Icon3 .Icon3_a:hover{
+    font-size: 90%;
+    font-weight: 800;
+    margin-top: 2%;
+}
+.Top_Icon4{
+    width: 200px;
+    display: flex;
+}
+.Top_Icon4 a{
+    color: white;
+    text-decoration: none;
+    font-size: 85%;
+    margin-top: 12px;
+    padding: 0px 3px;
+}
+.Top_Icon4 a:hover{
+    font-size: 100%;
+}
+.Top_Bottom{
+    background-image: url(../img/header-bg.jpg);
+    height: 80%;
+    width: 100%;
+    background-position: center;
+    box-sizing: border-box;
+}
+.Top_lammo{
+    height: 100%;
+    background-color: rgb(255, 251, 251 , 0.7);
+     display: flex;
+}
+.Menu{
+    width: 40%;
+    height: 100%;
+    padding-top: 40px;
+    padding-right:20px ;
+}
+.Menu .Menu1{
+   padding-left: 60px;
+}
+.Menu .Menu1 span{
+   font-size: 13px;
+}
+.Menu .Menu1 li {
+    list-style:none ;
+    display: inline-block;
+    margin-left:20px ;
+
+}
+.Menu .Menu1 li a{
+    font-weight: bolder;
+    text-decoration: none;
+    color:rgb(107, 106, 106) ;
+}
+.Menu1 li{
+    position: relative;
+    z-index: 1;
+}
+.Menu1 li #shop .arrowduoi{
+    top: 0%;
+}
+.Menu1 .menushop {
+    background-color: white;
+    position: absolute;
+    display: none;
+    padding: 10px 0px;
+    
+}
+.Menu1 .menushop .menu_nho{
+    width: 150px;
+    height: 30px;
+    margin: 0px ;
+    padding: 10px 10px 0px 10px;
+}
+.Menu1 .shop:hover .menushop{
+    display: block;
+}
+.menushop .menu_nho:hover{
+    background-color: rgb(228, 228, 228);
+}
+.Menu .Menu1 li .text:hover{
+    margin-top: 10px;
+    color: rgba(255, 0, 0, 0.507);
+}
+.Logo img{
+    width: 180px;
+    margin-top: 40px;
+}
+.Search {
+    display: flex;
+    padding-left: 60px;
+    padding-top: 45px;
+}
+.Search .Box{
+    height: 33px;
+    width: 250px;
+    padding-left: 10px;
+    position: relative;
+}
+.Search .Box #TimKiem1{
+    position: absolute;
+    right: 2%;
+    top: 10%;
+    float: right;
+}
+.Search .Box #TimKiem{
+    height: 100%;
+    width: 100%;
+    padding-left: 10px;
+    background-color: rgba(0,0,0,0.03);
+    box-shadow: none;
+    border-color: rgba(0,0,0,0.09);
+    color: currentColor !important;
+    border-radius: 99px;
+}
+.Giohang{
+    margin:2% 0% 0% 30px;
+}
+.Giohang .text{
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    color: #737373;
+}
+.Giohang a{
+    text-decoration: none;
+}
+.Giohang .text i{
+    color: #737373;
+}
+.Giohang .text:hover i{
+    color: rgba(255, 0, 0, 0.507);
+}
+.Giohang .text:hover{
+    color: rgba(255, 0, 0, 0.507);
+}
+.bottom{
+    width: 100%;
+    height: 450px;
+    color: white;
+    font-size: 110%;
+    line-height: 1.5;
+}
+.bottom .bottom_top{
+    width: 100%;
+    height: 390px;
+    background: url(../img/footer-background.jpg);
+    background-position: center;
+    background-size: cover;
+}
+.bottom .bottom_top .bottom_color{
+    width: 100%;
+    height: 390px;
+    background-color: rgba(0,0,0,0.6);
+}
+.bottom_small {
+    width: 90%;
+    height: 330px;
+    padding-top: 60px ;
+    margin: auto;
+    display: flex;
+}
+.bottom_left{
+    width: 30%;
+    height: 330px;
+    margin-right: 3%;
+}
+#bottom_logo{
+    width: 70%;
+    padding-bottom: 20px;
+}
+.bottom_cot1{
+    display: flex;
+}
+.bottom_left .imger_cot1{
+    width: 15px;
+    margin-right: 10px;
+}
+.bottom_a{
+    text-decoration: none;
+    color: white;
+}
+.bottom .bottom_a:hover{
+    color:  rgba(255, 0, 0, 0.507);
+}
+.bottom .bottom_cot1:hover{
+    color:  rgba(255, 0, 0, 0.507);
+}
+.bottom_li1{
+    width: 15%;
+    height: 330px;
+    margin-right: 3%;
+}
+.bottom_cot2{
+    list-style-type: none;
+    padding-inline-start: 0px;
+}
+.bottom_a1{
+    text-decoration: none;
+    color: white;
+    line-height: 40px;
+}
+.imger_cot2{
+    width: 10px;
+    display: inline-block;
+    vertical-align: baseline;
+    margin: 0 15px 0 5px;
+}
+.bottom_cot2 .bottom_bang:hover{
+    color:  rgba(255, 0, 0, 0.507);
+}
+.bottom_cot2 .bottom_bang a:hover{
+    color:  rgba(255, 0, 0, 0.507);
+}
+.bottom_li2{
+    width: 15%;
+    height: 330px;
+    margin-right: 3%;
+}
+.bottom_right{
+    width: 30%;
+    height: 330px;
+}
+#bottom_email{
+    width: 100%;
+    height: 40px;
+    font-size: 20px;
+    border-radius:4px 0px 0px 4px;
+    border-top: 1px solid grey;
+    border-right: 1px solid grey;
+    border-bottom: 1px solid grey;
+    padding: 0 10px
+}
+.bottom_img2{
+    padding-right: 10px;
+}
+.bottom_img2:not(.bottom_right){
+    font-size: 1.5em;
+}
+.bottom_email_dang_ky{
+    display: flex;
+}
+.bottom_email_dangky{
+    width: 100%;
+}
+.bottom_img3{
+    width: 40px;
+    background-color: white;
+    border-radius:0px 4px 4px 0px;
+    border-top: 1px solid grey;
+    border-right: 1px solid grey;
+    border-bottom: 1px solid grey;
+}
+#bottom_img2{
+    width: 40px;
+}
+.bottom_img2:hover{
+    color:  rgba(255, 0, 0, 0.507);
+}
+.bottom .bottom_bottom{
+    width: 100%;
+    height: 60px;
+    background-color: black;
+}
+.bottom_bottom p{
+    margin-block-end: 0px;
+    margin-block-start: 0px;
+    text-align: center;
+    padding-top: 10px;
+}
+.bottom_imger{
+    width: 20px;
+    height: 20px;
+}
+.bottom_right .img_icon{
+    padding-left: 5px;
+    color: white;
+}
+.bottom_right .img_icon .img:hover{
+    color:  rgba(255, 0, 0, 0.507);
+}

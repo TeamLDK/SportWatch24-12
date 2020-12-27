@@ -126,7 +126,7 @@
                                         <div class="pd-detail-inline-2">
                                             <div class="u-s-m-b-15">
 
-                                                <button class="btn btn--e-brand-b-2" id="buy-now">Buy Now</button></div>
+                                                <button class="btn btn--e-brand-b-2" id="buy-now">Add to cart</button></div>
                                         </div>
                                     </div>
                                 </div>
@@ -515,6 +515,8 @@
             $('#price-product').text(formatMoney(obj.gia_san_pham) + ' VND');
             $('#num-product').text(obj.so_luong_ton_kho + ' in stock');
             $('#short-description-product').text(getShortStr(obj.mo_ta_san_pham));
+            $('#long-description-product').text(obj.mo_ta_san_pham);
+            //
             $('#buy-now').attr('onclick', `addProductToCart('` + obj.id_san_pham + `')`);
             $('#add-to-wishlist').attr('onclick', `addProductToWishlist('` + obj.id_san_pham + `')`);
             $(

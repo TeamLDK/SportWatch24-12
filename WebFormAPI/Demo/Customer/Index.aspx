@@ -1406,12 +1406,10 @@
                 success: function (response) {
                     let $imgsSlider = $('#hero-slider .owl-stage-outer .owl-stage');
                     var cl = $('.hero-slide--1').css("background-image");
-                    console.log(cl);
                     //$(selector).css("propertyName", "value");
                     $('.hero-slide--1').css("background-image", `url(../Uploads/AnhGiaoDien/` + response[0].url + `)`);
                     $('.hero-slide--2').css("background-image", `url(../Uploads/AnhGiaoDien/` + response[1].url + `)`);
                     $('.hero-slide--3').css("background-image", `url(../Uploads/AnhGiaoDien/` + response[2].url + `)`);
-                    console.log($('.hero-slide--1').css("background-image"));
                 },
                 error: function (error) {
                     console.error(error)

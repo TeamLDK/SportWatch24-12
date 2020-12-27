@@ -663,6 +663,14 @@
 
     <script>
         $(document).ready(function () {
+            //
+            const xhr = new XMLHttpRequest();
+            const url = 'https://localhost:44344';
+
+            xhr.open('GET', url);
+            xhr.send();
+
+            //
             getDropdown();
             let item = localStorage.getItem('inforUser');
             if (item != null) {
@@ -890,7 +898,7 @@
                     },
                     success: function (response) {
                         alert('Thêm vào giỏ hàng thành công!');
-                        window.location = "Products.aspx";
+                        document.location.reload();
                     },
                     error: function (error) {
                         alert('Sản phẩm đã có trong giỏ hàng của bạn!');
@@ -924,9 +932,6 @@
                 window.location = "Login.aspx";
             }
         }
-        deleteProductFromCart = (id_product) => {
-
-        }
 
         getGioHang = (id_kh) => {
             let urlStr = `https://localhost:44344/api/GioHangs?id_kh=` + id_kh;
@@ -945,7 +950,7 @@
                                 <div class="mini-product">
                                     <div class="mini-product__image-wrapper">
 
-                                        <a class="mini-product__link" href="product-detail.html">
+                                        <a class="mini-product__link" href="DetailProduct.aspx?id=${product.id_san_pham}">
 
                                             <img class="u-img-fluid" src="../Uploads/AnhSP/`+ getImageProduct(product.id_san_pham) +`" alt=""></a></div>
                                     <div class="mini-product__info-wrapper">
@@ -963,7 +968,7 @@
                                         <span class="mini-product__price">`+ formatMoney(product.gia_san_pham)+` VND</span></div>
                                 </div>
 
-                                <a class="mini-product__delete-link far fa-trash-alt"></a>
+                                <a class="mini-product__delete-link far fa-trash-alt" onclick="deleteProductOnCart('`+ id_kh + `', '` + item.id_san_pham +`')"></a>
                             </div>
                             `
                         ).appendTo(gioHang);
@@ -1041,6 +1046,7 @@
             }
         }
 
+        // fomat money
         formatMoney = (amount, decimalCount = 2, decimal = ".", thousands = ",") => {
             try {
                 decimalCount = Math.abs(decimalCount);
@@ -1057,9 +1063,44 @@
             }
         };
 
+        // phần trăm khuyến mãi
         getDiscountPrice = (fMoney, pDiscount) => {
             return fMoney - ((fMoney * pDiscount) / 100);
         }
+
+        //xóa sản phẩm khỏi giỏ hàng
+        deleteProductOnCart = (id_kh, id_sp) => {
+            let urlStr = `https://localhost:44344/api/GioHangs?id_kh=` + id_kh + `&id_product=` + id_sp;
+            $.ajax({
+                type:'DELETE',
+                url: urlStr,
+                crossDomain: true,
+                success: function (response) {
+                    document.location.reload();
+                },
+                error: function (error) {
+                    console.error(error)
+                }
+            });
+        }
+
+         //xóa sản phẩm khỏi wishlist hàng
+        deleteProductOnWishlist = (id_kh, id_sp) => {
+
+            let urlStr = `https://localhost:44344/api/Wishlists?id_kh=` + id_kh + `&id_sp=` + id_sp;
+            $.ajax({
+                type: 'DELETE',
+                url: urlStr,
+                success: function (response) {
+                    document.location.reload();
+                },
+                error: function (error) {
+                    console.error(error)
+                }
+            });
+        }
+
+
     </script>
 
     <asp:ContentPlaceHolder ID="foot" runat="server">
