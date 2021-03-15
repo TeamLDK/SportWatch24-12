@@ -13,6 +13,18 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Blog">
+      <EntityTypeMapping TypeName="BanDongHoModel.Blog">
+        <MappingFragment StoreEntitySet="Blog">
+          <ScalarProperty Name="id_blog" ColumnName="id_blog" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="time" ColumnName="time" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="content" ColumnName="content" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="ChiTietHoaDon">
       <EntityTypeMapping TypeName="BanDongHoModel.ChiTietHoaDon">
         <MappingFragment StoreEntitySet="ChiTietHoaDon">
@@ -147,17 +159,38 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Blog">
-      <EntityTypeMapping TypeName="BanDongHoModel.Blog">
-        <MappingFragment StoreEntitySet="Blog">
-          <ScalarProperty Name="content" ColumnName="content" />
-          <ScalarProperty Name="image" ColumnName="image" />
-          <ScalarProperty Name="title" ColumnName="title" />
-          <ScalarProperty Name="time" ColumnName="time" />
-          <ScalarProperty Name="username" ColumnName="username" />
-          <ScalarProperty Name="id_blog" ColumnName="id_blog" />
+    <EntitySetMapping Name="Wishlist">
+      <EntityTypeMapping TypeName="BanDongHoModel.Wishlist">
+        <MappingFragment StoreEntitySet="Wishlist">
+          <ScalarProperty Name="id_kh" ColumnName="id_kh" />
+          <ScalarProperty Name="id_san_pham" ColumnName="id_san_pham" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="BanDongHoModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="BanDongHoModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="BanDongHoModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="BanDongHoModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BanDongHoModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="BanDongHoModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BanDongHoModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="BanDongHoModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="BanDongHoModel.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="ThuNhapTrungBinh" FunctionName="BanDongHoModel.Store.ThuNhapTrungBinh" />
   </EntityContainerMapping>
 </Mapping>

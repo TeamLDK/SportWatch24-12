@@ -169,18 +169,23 @@
     <Compile Include="Controllers\DanhMucSanPhamsController.cs" />
     <Compile Include="Controllers\GetImageDetailProductController.cs" />
     <Compile Include="Controllers\GetImageProductController.cs" />
+    <Compile Include="Controllers\GetProductsBySearchController.cs" />
+    <Compile Include="Controllers\GetProductsSameTypeController.cs" />
     <Compile Include="Controllers\GioHangsController.cs" />
     <Compile Include="Controllers\HoaDonsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImgGiaoDiensController.cs" />
+    <Compile Include="Controllers\ImgSanPhamsController.cs" />
     <Compile Include="Controllers\KhachHangsController.cs" />
     <Compile Include="Controllers\LatestProductsController.cs" />
     <Compile Include="Controllers\NewestBlogsController.cs" />
     <Compile Include="Controllers\SanPhamsController.cs" />
+    <Compile Include="Controllers\ThongKeThuNhapController.cs" />
     <Compile Include="Controllers\ThuongHieusController.cs" />
     <Compile Include="Controllers\TopDiscountsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\VanChuyensController.cs" />
+    <Compile Include="Controllers\WishlistsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -232,13 +237,23 @@
     <Compile Include="Models\SanPham.cs">
       <DependentUpon>BanDongHo.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>BanDongHo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>BanDongHo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>BanDongHo.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ThongKeModel.cs" />
     <Compile Include="Models\ThuongHieu.cs">
       <DependentUpon>BanDongHo.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\VanChuyen.cs">
+      <DependentUpon>BanDongHo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Wishlist.cs">
       <DependentUpon>BanDongHo.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

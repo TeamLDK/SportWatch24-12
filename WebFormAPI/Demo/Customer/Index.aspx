@@ -21,17 +21,17 @@
                                         <div class="col-12">
                                             <div class="slider-content slider-content--animation">
 
-                                                <span class="content-span-1 u-c-white">Find Top Brands</span>
+                                                <span class="content-span-1 u-c-white">Top Famous Brand</span>
 
-                                                <span class="content-span-2 u-c-white">10% Off On Intimates</span>
+                                                <span class="content-span-2 u-c-white">Discount Up To 50%</span>
 
-                                                <span class="content-span-3 u-c-white">Find Intimates on best prices</span>
+                                                <span class="content-span-3 u-c-white">Good Price, High Quality Products</span>
 
                                                 <span class="content-span-4 u-c-white">Starting At
 
-                                                    <span class="u-c-brand">$100.00</span></span>
+                                                    <span class="u-c-brand">100.000 VND</span></span>
 
-                                                <a class="shop-now-link btn--e-brand" href="shop-side-version-2.html">SHOP NOW</a></div>
+                                                <a class="shop-now-link btn--e-brand" href="Products.aspx">SHOP NOW</a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -42,17 +42,17 @@
                                         <div class="col-12">
                                             <div class="slider-content slider-content--animation">
 
-                                                <span class="content-span-1 u-c-white">Find Top Brands</span>
+                                                <span class="content-span-1 u-c-white">Top Famous Brand</span>
 
-                                                <span class="content-span-2 u-c-white">10% Off On Electronics</span>
+                                                <span class="content-span-2 u-c-white">Discount Up To 50%</span>
 
-                                                <span class="content-span-3 u-c-white">Find electronics on best prices</span>
+                                                <span class="content-span-3 u-c-white">Good Price, High Quality Products</span>
 
                                                 <span class="content-span-4 u-c-white">Starting At
 
-                                                    <span class="u-c-brand">$1000.00</span></span>
+                                                    <span class="u-c-brand">100.000 VND</span></span>
 
-                                                <a class="shop-now-link btn--e-brand" href="shop-side-version-2.html">SHOP NOW</a></div>
+                                                <a class="shop-now-link btn--e-brand" href="Products.aspx">SHOP NOW</a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -63,17 +63,17 @@
                                         <div class="col-12">
                                             <div class="slider-content slider-content--animation">
 
-                                                <span class="content-span-1 u-c-white">Find Top Brands</span>
+                                                <span class="content-span-1 u-c-white">Top Famous Brand</span>
 
-                                                <span class="content-span-2 u-c-white">10% Off On Outwear</span>
+                                                <span class="content-span-2 u-c-white">Discount Up To 50%</span>
 
-                                                <span class="content-span-3 u-c-white">Find outwear on best prices</span>
+                                                <span class="content-span-3 u-c-white">Good Price, High Quality Products</span>
 
                                                 <span class="content-span-4 u-c-white">Starting At
 
-                                                    <span class="u-c-brand">$100.00</span></span>
+                                                    <span class="u-c-brand">100.000 VND</span></span>
 
-                                                <a class="shop-now-link btn--e-brand" href="shop-side-version-2.html">SHOP NOW</a></div>
+                                                <a class="shop-now-link btn--e-brand" href="Products.aspx">SHOP NOW</a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -166,9 +166,44 @@
                                                 <div class="product-o product-o--hover-on" >
                                                     <div class="product-o__wrap">
 
+                                                        <a class="aspect aspect--bg-grey aspect--square u-d-block" href="#">
+
+                                                            <img class="aspect__img" src="#" alt=""></a>
+                                                        <div class="product-o__action-wrap">
+                                                            <ul class="product-o__action-list">
+                                                                <li>
+
+                                                                    <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a></li>
+                                                                <li>
+
+                                                                    <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
+                                                                <li>
+
+                                                                    <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+
+                                                    <span class="product-o__category">
+
+                                                        <a href="shop-side-version-2.html">Electronics</a></span>
+
+                                                    <span class="product-o__name">
+
+                                                        <a href="product-detail.html">Red Wireless Headphone</a></span>
+
+                                                    <span class="product-o__price">$125.00
+
+                                                        <span class="product-o__discount">$160.00</span></span>
+                                                </div>
+                                            </div>
+                                            <div class="u-s-m-b-30" >
+                                                <div class="product-o product-o--hover-on" >
+                                                    <div class="product-o__wrap">
+
                                                         <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
 
-                                                            <img class="aspect__img" src="Assets/images//product/electronic/product2.jpg" alt=""></a>
+                                                            <img class="aspect__img" src="#" alt=""></a>
                                                         <div class="product-o__action-wrap">
                                                             <ul class="product-o__action-list">
                                                                 <li>
@@ -238,42 +273,7 @@
 
                                                         <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
 
-                                                            <img class="aspect__img" src="Assets/images//product/electronic/product2.jpg" alt=""></a>
-                                                        <div class="product-o__action-wrap">
-                                                            <ul class="product-o__action-list">
-                                                                <li>
-
-                                                                    <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick View"><i class="fas fa-search-plus"></i></a></li>
-                                                                <li>
-
-                                                                    <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
-                                                                <li>
-
-                                                                    <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-
-                                                    <span class="product-o__category">
-
-                                                        <a href="shop-side-version-2.html">Electronics</a></span>
-
-                                                    <span class="product-o__name">
-
-                                                        <a href="product-detail.html">Red Wireless Headphone</a></span>
-
-                                                    <span class="product-o__price">$125.00
-
-                                                        <span class="product-o__discount">$160.00</span></span>
-                                                </div>
-                                            </div>
-                                            <div class="u-s-m-b-30" >
-                                                <div class="product-o product-o--hover-on" >
-                                                    <div class="product-o__wrap">
-
-                                                        <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-
-                                                            <img class="aspect__img" src="Assets/images//product/electronic/product2.jpg" alt=""></a>
+                                                            <img class="aspect__img" src="#" alt=""></a>
                                                         <div class="product-o__action-wrap">
                                                             <ul class="product-o__action-list">
                                                                 <li>
@@ -646,7 +646,7 @@
 
                                                         <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
 
-                                                            <img class="aspect__img" src="Assets/images//product/electronic/product2.jpg" alt=""></a>
+                                                            <img class="aspect__img" src="#" alt=""></a>
                                                         <div class="product-o__action-wrap">
                                                             <ul class="product-o__action-list">
                                                                 <li>
@@ -681,7 +681,7 @@
 
                                                         <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
 
-                                                            <img class="aspect__img" src="Assets/images//product/electronic/product2.jpg" alt=""></a>
+                                                            <img class="aspect__img" src="#" alt=""></a>
                                                         <div class="product-o__action-wrap">
                                                             <ul class="product-o__action-list">
                                                                 <li>
@@ -726,7 +726,7 @@
 
                                                         <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
 
-                                                            <img class="aspect__img" src="Assets/images//product/electronic/product2.jpg" alt=""></a>
+                                                            <img class="aspect__img" src="#" alt=""></a>
                                                         <div class="product-o__action-wrap">
                                                             <ul class="product-o__action-list">
                                                                 <li>
@@ -767,7 +767,7 @@
 
                                                         <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
 
-                                                            <img class="aspect__img" src="Assets/images//product/electronic/product1.jpg" alt=""></a>
+                                                            <img class="aspect__img" src="#" alt=""></a>
                                                         <div class="product-o__action-wrap">
                                                             <ul class="product-o__action-list">
                                                                 <li>
@@ -808,7 +808,7 @@
 
                                                         <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
 
-                                                            <img class="aspect__img" src="Assets/images//product/electronic/product33.jpg" alt=""></a>
+                                                            <img class="aspect__img" src="#" alt=""></a>
                                                         <div class="product-o__action-wrap">
                                                             <ul class="product-o__action-list">
                                                                 <li>
@@ -1065,119 +1065,7 @@
 
 
                 <!--====== Section 7 ======-->
-                <div class="u-s-p-b-60">
-
-                    <!--====== Section Intro ======-->
-                    <div class="section__intro u-s-m-b-46">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="section__text-wrap">
-                                        <h1 class="section__heading u-c-secondary u-s-m-b-12">EXCLUSIVE PRODUCT</h1>
-
-                                        <span class="section__span u-c-silver">FIND EXCLUSIVE PRODUCT</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--====== End - Section Intro ======-->
-
-
-                    <!--====== Section Content ======-->
-                    <div class="section__content">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-6 u-s-m-b-30">
-                                    <div class="x-product u-h-100">
-                                        <div class="row">
-                                            <div class="col-lg-4 col-md-4 col-sm-4">
-                                                <ul class="x-product__feature-list">
-                                                    <li class="feature">
-
-                                                        <span class="feature__name">NAME</span>
-
-                                                        <span class="feature__value">New Fashion A Sweater</span></li>
-                                                    <li class="feature">
-
-                                                        <span class="feature__name">PRICE</span>
-
-                                                        <span class="feature__value">$125.00</span></li>
-                                                    <li class="feature">
-
-                                                        <span class="feature__name">COLOR</span>
-
-                                                        <span class="feature__value">Black</span></li>
-                                                    <li class="feature">
-
-                                                        <span class="feature__name">SIZE</span>
-
-                                                        <span class="feature__value">XL</span></li>
-                                                    <li class="feature">
-
-                                                        <span class="feature__name">MATERIAL</span>
-
-                                                        <span class="feature__value">Cotton</span></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-lg-8 col-md-8 col-sm-8">
-                                                <div class="x-product__img-wrap">
-
-                                                    <a class="u-d-block" href="product-detail.html">
-
-                                                        <img class="u-d-block u-img-fluid" src="Assets/images//product/men/product11.jpg" alt=""></a></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 u-s-m-b-30">
-                                    <div class="x-product u-h-100">
-                                        <div class="row">
-                                            <div class="col-lg-4 col-md-4 col-sm-4">
-                                                <ul class="x-product__feature-list">
-                                                    <li class="feature">
-
-                                                        <span class="feature__name">NAME</span>
-
-                                                        <span class="feature__value">New Fashion A Nice Elegant</span></li>
-                                                    <li class="feature">
-
-                                                        <span class="feature__name">PRICE</span>
-
-                                                        <span class="feature__value">$125.00</span></li>
-                                                    <li class="feature">
-
-                                                        <span class="feature__name">COLOR</span>
-
-                                                        <span class="feature__value">White Black</span></li>
-                                                    <li class="feature">
-
-                                                        <span class="feature__name">SIZE</span>
-
-                                                        <span class="feature__value">XL</span></li>
-                                                    <li class="feature">
-
-                                                        <span class="feature__name">MATERIAL</span>
-
-                                                        <span class="feature__value">Cotton</span></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-lg-8 col-md-8 col-sm-8">
-                                                <div class="x-product__img-wrap">
-
-                                                    <a class="u-d-block" href="product-detail.html">
-
-                                                        <img class="u-d-block u-img-fluid" src="Assets/images//product/women/product20.jpg" alt=""></a></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--====== Section Content ======-->
-                </div>
+                
                 <!--====== End - Section 7 ======-->
 
 
@@ -1271,7 +1159,7 @@
     <script>
         $(document).ready(function () {
             getCategory();
-            getTradeMark();
+            getManufacturer();
             getLatestProducts();
             bestSellingProduct();
             topDiscounts();
@@ -1295,7 +1183,7 @@
                                         <img class="aspect__img category-o__img" src="../Uploads/AnhDanhMuc/`+category.img_danh_muc+`" alt=""></div>
                                         <div class="category-o__info">
 
-                                            <a class="category-o__shop-now btn--e-white-brand" href="shop-side-version-2.html">`+ category.ten_danh_muc +`</a></div>
+                                            <a class="category-o__shop-now btn--e-white-brand" href="Products.aspx?id_danh_muc=${category.id_danh_muc}">`+ category.ten_danh_muc +`</a></div>
                                     </div>
                                 </div>`
                         ).appendTo($categoryList)
@@ -1307,8 +1195,8 @@
             })
         }
         
-        // ajax call api getTradeMark
-        function getTradeMark() {
+        // ajax call api Manufacturer
+        function getManufacturer() {
             $.ajax({
                 url: 'https://localhost:44344/api/ThuongHieus',
                 success: function (response) {
@@ -1321,7 +1209,7 @@
                                         <div class="aspect aspect--bg-grey aspect--square category-o__img-wrap">
                                             <img class="aspect__img category-o__img" src="../Uploads/AnhThuongHieu/`+ tradeMark.img_thuong_hieu +`" alt=""></div>
                                         <div class="category-o__info">
-                                            <a class="category-o__shop-now btn--e-white-brand" href="shop-side-version-2.html">`+ tradeMark.ten_thuong_hieu +`</a></div>
+                                            <a class="category-o__shop-now btn--e-white-brand" href="Products.aspx?id_thuong_hieu=${tradeMark.id_thuong_hieu}">`+ tradeMark.ten_thuong_hieu +`</a></div>
                                     </div>
                                 </div>
                             `
@@ -1356,28 +1244,29 @@
                                                             <ul class="product-o__action-list">
                                                                 <li>
 
-                                                                    <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="" data-original-title="Quick View"><i class="fas fa-search-plus"></i></a></li>
+                                                                    <a href="DetailProduct.aspx?id=${latestProduct.id_san_pham}" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="" data-original-title="Quick View"><i class="fas fa-search-plus"></i></a></li>
                                                                 <li>
 
-                                                                    <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="" data-original-title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
+                                                                    <a onclick="addProductToCart('`+ latestProduct.id_san_pham +`')" data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="" data-original-title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
                                                                 <li>
 
-                                                                    <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="" data-original-title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
+                                                                    <a onclick="addProductToWishlist('`+ latestProduct.id_san_pham +`')" data-tooltip="tooltip" data-placement="top" title="" data-original-title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
 
                                                     <span class="product-o__category">
 
-                                                        <a href="shop-side-version-2.html">`+ getManufacturer(latestProduct.id_thuong_hieu) +`</a></span>
+                                                        <a href="Products.aspx?id_danh_muc=${latestProduct.id_danh_muc}">` + getNameCategory(latestProduct.id_danh_muc) + `</a> <span>-</span> 
+                                                        <a href="Products.aspx?id_thuong_hieu=${latestProduct.id_thuong_hieu}">` + getNameManufacturer(latestProduct.id_thuong_hieu) + `</a> <br>
 
                                                     <span class="product-o__name">
 
-                                                        <a href="product-detail.html">`+ latestProduct.ten_san_pham +`</a></span>
+                                                        <a href="DetailProduct.aspx?id=${latestProduct.id_san_pham}">`+ latestProduct.ten_san_pham +`</a></span>
 
-                                                    <span class="product-o__price">`+ latestProduct.gia_san_pham +` VND
+                                                    <span class="product-o__price">`+ formatMoney(latestProduct.gia_san_pham) +` VND
 
-                                                        <span class="product-o__discount">`+ latestProduct.phan_tram_khuyen_mai +`</span></span>
+                                                        <span class="product-o__discount" style="color:red">`+ latestProduct.phan_tram_khuyen_mai +`%</span></span>
                                                 </div>
                                             </div></div>
                             `
@@ -1416,28 +1305,29 @@
                                                 <ul class="product-o__action-list">
                                                     <li>
 
-                                                        <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="" data-original-title="Quick View"><i class="fas fa-search-plus"></i></a></li>
+                                                        <a href="DetailProduct.aspx?id=${item.id_san_pham}" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="" data-original-title="Quick View"><i class="fas fa-search-plus"></i></a></li>
                                                     <li>
 
-                                                        <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="" data-original-title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
+                                                        <a onclick="addProductToCart('`+ item.id_san_pham + `')" data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="" data-original-title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
                                                     <li>
 
-                                                        <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="" data-original-title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
+                                                        <a onclick="addProductToWishlist('`+ item.id_san_pham +`')" data-tooltip="tooltip" data-placement="top" title="" data-original-title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
                                                 </ul>
                                             </div>
                                         </div>
 
                                         <span class="product-o__category">
 
-                                            <a href="shop-side-version-2.html">`+ getManufacturer(item.id_thuong_hieu) + `</a></span>
+                                            <a href="Products.aspx?id_danh_muc=${item.id_danh_muc}">` + getNameCategory(item.id_danh_muc) + `</a> <span>-</span> 
+                                            <a href="Products.aspx?id_thuong_hieu=${item.id_thuong_hieu}">` + getNameManufacturer(item.id_thuong_hieu) + `</a> <br>
 
                                         <span class="product-o__name">
 
-                                            <a href="product-detail.html">`+ item.ten_san_pham + `</a></span>
+                                            <a href="DetailProduct.aspx?id=${item.id_san_pham}">`+ item.ten_san_pham + `</a></span>
 
-                                        <span class="product-o__price">`+ item.gia_san_pham + ` VND
+                                        <span class="product-o__price">`+ formatMoney(item.gia_san_pham) + ` VND
 
-                                            <span class="product-o__discount">`+ item.phan_tram_khuyen_mai + `</span></span>
+                                            <span class="product-o__discount" style="color:red">`+ item.phan_tram_khuyen_mai + `%</span></span>
                                     </div>
                                 </div></div>
                             `
@@ -1473,28 +1363,29 @@
                                                 <ul class="product-o__action-list">
                                                     <li>
 
-                                                        <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="" data-original-title="Quick View"><i class="fas fa-search-plus"></i></a></li>
+                                                        <a href="DetailProduct.aspx?id=${item.id_san_pham}" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="" data-original-title="Quick View"><i class="fas fa-search-plus"></i></a></li>
                                                     <li>
 
-                                                        <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="" data-original-title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
+                                                        <a onclick="addProductToCart('`+ item.id_san_pham + `')" data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="" data-original-title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
                                                     <li>
 
-                                                        <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="" data-original-title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
+                                                        <a onclick="addProductToWishlist('`+ item.id_san_pham +`')" data-tooltip="tooltip" data-placement="top" title="" data-original-title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
                                                 </ul>
                                             </div>
                                         </div>
 
                                         <span class="product-o__category">
 
-                                            <a href="shop-side-version-2.html">`+ getManufacturer(item.id_thuong_hieu) + `</a></span>
+                                            <a href="Products.aspx?id_danh_muc=${item.id_danh_muc}">` + getNameCategory(item.id_danh_muc) + `</a> <span>-</span> 
+                                            <a href="Products.aspx?id_thuong_hieu=${item.id_thuong_hieu}">` + getNameManufacturer(item.id_thuong_hieu) + `</a> <br>
 
                                         <span class="product-o__name">
 
-                                            <a href="product-detail.html">`+ item.ten_san_pham + `</a></span>
+                                            <a href="DetailProduct.aspx?id=${item.id_san_pham}">`+ item.ten_san_pham + `</a></span>
 
-                                        <span class="product-o__price">`+ item.gia_san_pham + ` VND
+                                        <span class="product-o__price">`+ formatMoney(item.gia_san_pham) + ` VND
 
-                                            <span class="product-o__discount">`+ item.phan_tram_khuyen_mai + `</span></span>
+                                            <span class="product-o__discount" style="color:red">`+ item.phan_tram_khuyen_mai + `%</span></span>
                                     </div>
                                 </div></div>
                             `
@@ -1515,12 +1406,10 @@
                 success: function (response) {
                     let $imgsSlider = $('#hero-slider .owl-stage-outer .owl-stage');
                     var cl = $('.hero-slide--1').css("background-image");
-                    console.log(cl);
                     //$(selector).css("propertyName", "value");
                     $('.hero-slide--1').css("background-image", `url(../Uploads/AnhGiaoDien/` + response[0].url + `)`);
                     $('.hero-slide--2').css("background-image", `url(../Uploads/AnhGiaoDien/` + response[1].url + `)`);
                     $('.hero-slide--3').css("background-image", `url(../Uploads/AnhGiaoDien/` + response[2].url + `)`);
-                    console.log($('.hero-slide--1').css("background-image"));
                 },
                 error: function (error) {
                     console.error(error)

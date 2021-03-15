@@ -23,7 +23,7 @@ namespace BanDongHoAPI.Controllers
             List<SanPham> lsItems = new List<SanPham>();
             var ls = db
             .ChiTietHoaDon.GroupBy(x => x.id_san_pham).OrderByDescending(c => c.Sum(y => y.so_luong))
-            .Select(x => new { id_san_pham = x.Key, sum = x.Sum(y => y.so_luong) }).Take(7);
+            .Select(x => new { id_san_pham = x.Key, sum = x.Sum(y => y.so_luong) }).Take(5);
             foreach(var item in ls){
                 SanPham it = db.SanPham.FirstOrDefault(x => x.id_san_pham == item.id_san_pham);
                 lsItems.Add(it);

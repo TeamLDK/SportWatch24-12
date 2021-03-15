@@ -151,6 +151,14 @@
           <Property Name="email_don_vi_van_chuyen" Type="varchar" MaxLength="100" />
           <Property Name="phi_van_chuyen" Type="money" Nullable="false" />
         </EntityType>
+        <EntityType Name="Wishlist">
+          <Key>
+            <PropertyRef Name="id_kh" />
+            <PropertyRef Name="id_san_pham" />
+          </Key>
+          <Property Name="id_kh" Type="int" Nullable="false" />
+          <Property Name="id_san_pham" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
         <Association Name="FK__Blog__username__5FB337D6">
           <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
           <End Role="Blog" Type="Self.Blog" Multiplicity="*" />
@@ -295,6 +303,46 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ThongKeThuNhap" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="money">
+          <Parameter Name="month" Type="int" Mode="In" />
+          <Parameter Name="year" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ThuNhapTheoThang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="money">
+          <Parameter Name="thang" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ThuNhapTrungBinh" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="TongThuNhap" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="money" />
         <EntityContainer Name="BanDongHoModelStoreContainer">
           <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Blog" EntityType="Self.Blog" Schema="dbo" store:Type="Tables" />
@@ -310,6 +358,7 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ThuongHieu" EntityType="Self.ThuongHieu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VanChuyen" EntityType="Self.VanChuyen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wishlist" EntityType="Self.Wishlist" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Blog__username__5FB337D6" Association="Self.FK__Blog__username__5FB337D6">
             <End Role="Admin" EntitySet="Admin" />
             <End Role="Blog" EntitySet="Blog" />
@@ -373,7 +422,19 @@
           <Property Name="phone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
           <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Blog" Relationship="BanDongHoModel.FK__Blog__username__5FB337D6" FromRole="Admin" ToRole="Blog" />
+          <NavigationProperty Name="Blog" Relationship="Self.FK__Blog__username__5FB337D6" FromRole="Admin" ToRole="Blog" />
+        </EntityType>
+        <EntityType Name="Blog">
+          <Key>
+            <PropertyRef Name="id_blog" />
+          </Key>
+          <Property Name="id_blog" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="time" Type="DateTime" Precision="0" />
+          <Property Name="title" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Admin" Relationship="Self.FK__Blog__username__5FB337D6" FromRole="Blog" ToRole="Admin" />
         </EntityType>
         <EntityType Name="ChiTietHoaDon">
           <Key>
@@ -521,6 +582,26 @@
           <Property Name="phi_van_chuyen" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <NavigationProperty Name="HoaDon" Relationship="Self.FK__HoaDon__id_don_v__25869641" FromRole="VanChuyen" ToRole="HoaDon" />
         </EntityType>
+        <EntityType Name="Wishlist">
+          <Key>
+            <PropertyRef Name="id_kh" />
+            <PropertyRef Name="id_san_pham" />
+          </Key>
+          <Property Name="id_kh" Type="Int32" Nullable="false" />
+          <Property Name="id_san_pham" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Blog__username__5FB337D6">
+          <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
+          <End Role="Blog" Type="Self.Blog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="username" />
+            </Principal>
+            <Dependent Role="Blog">
+              <PropertyRef Name="username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__ChiTietHo__id_ho__29572725">
           <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
           <End Role="ChiTietHoaDon" Type="Self.ChiTietHoaDon" Multiplicity="*" />
@@ -655,6 +736,7 @@
         </Association>
         <EntityContainer Name="BanDongHoEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Admin" EntityType="Self.Admin" />
+          <EntitySet Name="Blog" EntityType="Self.Blog" />
           <EntitySet Name="ChiTietHoaDon" EntityType="Self.ChiTietHoaDon" />
           <EntitySet Name="DangKiNhanTin" EntityType="Self.DangKiNhanTin" />
           <EntitySet Name="DanhMucSanPham" EntityType="Self.DanhMucSanPham" />
@@ -667,6 +749,11 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="ThuongHieu" EntityType="Self.ThuongHieu" />
           <EntitySet Name="VanChuyen" EntityType="Self.VanChuyen" />
+          <EntitySet Name="Wishlist" EntityType="Self.Wishlist" />
+          <AssociationSet Name="FK__Blog__username__5FB337D6" Association="Self.FK__Blog__username__5FB337D6">
+            <End Role="Admin" EntitySet="Admin" />
+            <End Role="Blog" EntitySet="Blog" />
+          </AssociationSet>
           <AssociationSet Name="FK__ChiTietHo__id_ho__29572725" Association="Self.FK__ChiTietHo__id_ho__29572725">
             <End Role="HoaDon" EntitySet="HoaDon" />
             <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDon" />
@@ -711,36 +798,49 @@
             <End Role="ThuongHieu" EntitySet="ThuongHieu" />
             <End Role="SanPham" EntitySet="SanPham" />
           </AssociationSet>
-          <EntitySet Name="Blog" EntityType="BanDongHoModel.Blog" />
-          <AssociationSet Name="FK__Blog__username__5FB337D6" Association="BanDongHoModel.FK__Blog__username__5FB337D6">
-            <End Role="Admin" EntitySet="Admin" />
-            <End Role="Blog" EntitySet="Blog" />
-          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(BanDongHoModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(BanDongHoModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="ThuNhapTrungBinh" ReturnType="Collection(Decimal)" />
         </EntityContainer>
-        <EntityType Name="Blog">
-          <Key>
-            <PropertyRef Name="id_blog" />
-          </Key>
-          <Property Name="id_blog" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="time" Type="DateTime" Precision="0" />
-          <Property Name="title" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Admin" Relationship="BanDongHoModel.FK__Blog__username__5FB337D6" FromRole="Blog" ToRole="Admin" />
-        </EntityType>
-        <Association Name="FK__Blog__username__5FB337D6">
-          <End Type="BanDongHoModel.Admin" Role="Admin" Multiplicity="0..1" />
-          <End Type="BanDongHoModel.Blog" Role="Blog" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Admin">
-              <PropertyRef Name="username" />
-            </Principal>
-            <Dependent Role="Blog">
-              <PropertyRef Name="username" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -756,6 +856,18 @@
                 <ScalarProperty Name="phone" ColumnName="phone" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="address" ColumnName="address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Blog">
+            <EntityTypeMapping TypeName="BanDongHoModel.Blog">
+              <MappingFragment StoreEntitySet="Blog">
+                <ScalarProperty Name="id_blog" ColumnName="id_blog" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="time" ColumnName="time" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="content" ColumnName="content" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -893,18 +1005,39 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Blog">
-            <EntityTypeMapping TypeName="BanDongHoModel.Blog">
-              <MappingFragment StoreEntitySet="Blog">
-                <ScalarProperty Name="content" ColumnName="content" />
-                <ScalarProperty Name="image" ColumnName="image" />
-                <ScalarProperty Name="title" ColumnName="title" />
-                <ScalarProperty Name="time" ColumnName="time" />
-                <ScalarProperty Name="username" ColumnName="username" />
-                <ScalarProperty Name="id_blog" ColumnName="id_blog" />
+          <EntitySetMapping Name="Wishlist">
+            <EntityTypeMapping TypeName="BanDongHoModel.Wishlist">
+              <MappingFragment StoreEntitySet="Wishlist">
+                <ScalarProperty Name="id_kh" ColumnName="id_kh" />
+                <ScalarProperty Name="id_san_pham" ColumnName="id_san_pham" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="BanDongHoModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="BanDongHoModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="BanDongHoModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="BanDongHoModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BanDongHoModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="BanDongHoModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BanDongHoModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="BanDongHoModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="BanDongHoModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="ThuNhapTrungBinh" FunctionName="BanDongHoModel.Store.ThuNhapTrungBinh" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

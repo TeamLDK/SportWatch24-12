@@ -20,7 +20,7 @@ namespace BanDongHoAPI.Controllers
         {
             // Add the following code
             // problem will be solved
-            db.Configuration.ProxyCreationEnabled = true;
+            db.Configuration.ProxyCreationEnabled = false;
         }
 
         // GET: api/HoaDons
@@ -92,7 +92,15 @@ namespace BanDongHoAPI.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+            string key;
+            HoaDon temp = new HoaDon();
+            do
+            {
+                key = Guid.NewGuid().ToString("N").Substring(0,9);
+                temp = db.HoaDon.FirstOrDefault(x => x.id_hoa_don == key);
+            } while (temp != null);
+            hoaDon.id_hoa_don = "#" + key;
+            hoaDon.ngay_hoa_don = DateTime.Now;
             db.HoaDon.Add(hoaDon);
 
             try

@@ -68,6 +68,7 @@ namespace BanDongHoAPI.Controllers
             return Ok(result);
         }
 
+
         // PUT: api/KhachHangs/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutKhachHang(int id, KhachHang khachHang)
@@ -77,12 +78,31 @@ namespace BanDongHoAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (id != khachHang.id_kh)
+            KhachHang temp = db.KhachHang.FirstOrDefault(x => x.id_kh == id);
+            if (temp == null)
             {
                 return BadRequest();
             }
-
-            db.Entry(khachHang).State = EntityState.Modified;
+            if(khachHang.password_kh != null)
+            {
+                temp.password_kh = khachHang.password_kh;
+            }
+            if (khachHang.ten_kh != null)
+            {
+                temp.ten_kh = khachHang.ten_kh;
+            }
+            if (khachHang.sdt_kh != null)
+            {
+                temp.sdt_kh = khachHang.sdt_kh;
+            }
+            if (khachHang.email_kh != null)
+            {
+                temp.email_kh = khachHang.email_kh;
+            }
+            if (khachHang.dia_chi_kh != null)
+            {
+                temp.dia_chi_kh = khachHang.dia_chi_kh;
+            }
 
             try
             {
@@ -100,8 +120,12 @@ namespace BanDongHoAPI.Controllers
                 }
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok(temp);
         }
+
+
+
+
 
         // POST: api/KhachHangs
         [ResponseType(typeof(KhachHang))]

@@ -35,19 +35,18 @@ namespace BanDongHoAPI.Controllers
 
         // PUT: api/GioHangs/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutGioHang(int id, GioHang gioHang)
+        public IHttpActionResult PutGioHang(int id_kh, string id_sp, GioHang gioHang)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
-            if (id != gioHang.id_kh)
+            GioHang temp = db.GioHang.FirstOrDefault(x => x.id_kh == id_kh && x.id_san_pham == id_sp);
+            if (temp == null)
             {
                 return BadRequest();
             }
-
-            db.Entry(gioHang).State = EntityState.Modified;
+            temp.so_luong = gioHang.so_luong;
 
             try
             {
@@ -55,7 +54,7 @@ namespace BanDongHoAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!GioHangExists(id))
+                if (!GioHangExists(id_kh))
                 {
                     return NotFound();
                 }
@@ -65,7 +64,7 @@ namespace BanDongHoAPI.Controllers
                 }
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok(temp);
         }
 
         // POST: api/GioHangs
@@ -99,19 +98,41 @@ namespace BanDongHoAPI.Controllers
         }
 
         // DELETE: api/GioHang/5
+        [HttpDelete]
         [ResponseType(typeof(GioHang))]
         public IHttpActionResult DeleteKhachHang(int id_kh, string id_product)
         {
-            GioHang gioHang = db.GioHang.Find(id_kh, id_product);
-            if (gioHang == null)
+            
+            if (id_product == null)
             {
-                return NotFound();
+                if(id_kh == 0)
+                {
+                    return NotFound();
+                }
+                var ls = db.GioHang.Where(x => x.id_kh == id_kh);
+                db.GioHang.RemoveRange(ls);
+
+                db.SaveChanges();
+
+                return Ok(ls);
+            }
+            else
+            {
+                GioHang gioHang;
+                gioHang = db.GioHang.FirstOrDefault(x => x.id_kh == id_kh && x.id_san_pham == id_product);
+                if (gioHang == null)
+                {
+                    return NotFound();
+                }
+
+                db.GioHang.Remove(gioHang);
+                db.SaveChanges();
+
+                return Ok(gioHang);
             }
 
-            db.GioHang.Remove(gioHang);
-            db.SaveChanges();
 
-            return Ok(gioHang);
+            
         }
 
         protected override void Dispose(bool disposing)

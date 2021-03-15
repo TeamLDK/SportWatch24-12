@@ -2032,7 +2032,9 @@
     <Content Include="Customer\Assets\css\app.color8.css" />
     <Content Include="Customer\Assets\css\app.color9.css" />
     <Content Include="Customer\Assets\css\app.css" />
+    <Content Include="Customer\Assets\css\gioithieu.css" />
     <Content Include="Customer\Assets\css\lienhe.css" />
+    <Content Include="Customer\Assets\css\top_bottom.css" />
     <Content Include="Customer\Assets\css\utility.css" />
     <Content Include="Customer\Assets\css\vendor.css" />
     <Content Include="Customer\Assets\images\about\member-1.jpg" />
@@ -2273,6 +2275,9 @@
     <Content Include="Customer\Assets\images\slider\slide-7.jpg" />
     <Content Include="Customer\Assets\images\slider\slide-8.jpg" />
     <Content Include="Customer\Assets\images\slider\slide-9.jpg" />
+    <Content Include="Customer\Assets\img\anhnen.jpg" />
+    <Content Include="Customer\Assets\img\anhnenn.jpg" />
+    <Content Include="Customer\Assets\img\dl.jpg" />
     <Content Include="Customer\Assets\js\app.js" />
     <Content Include="Customer\Assets\js\jquery-3.4.1.min.js" />
     <Content Include="Customer\Assets\js\jquery.shopnav.js" />
@@ -2754,6 +2759,12 @@
     <Compile Include="Models\SanPham.cs">
       <DependentUpon>BanDongHo.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>BanDongHo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>BanDongHo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>BanDongHo.tt</DependentUpon>
     </Compile>
@@ -2761,6 +2772,9 @@
       <DependentUpon>BanDongHo.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\VanChuyen.cs">
+      <DependentUpon>BanDongHo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Wishlist.cs">
       <DependentUpon>BanDongHo.tt</DependentUpon>
     </Compile>
     <Compile Include="Product.aspx.cs">

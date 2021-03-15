@@ -31,6 +31,7 @@
         <AssociationConnector Association="BanDongHoModel.FK__SanPham__id_thuo__1B0907CE" ManuallyRouted="false" />
         <EntityTypeShape EntityType="BanDongHoModel.Blog" Width="1.5" PointX="10" PointY="5" />
         <AssociationConnector Association="BanDongHoModel.FK__Blog__username__5FB337D6" />
+        <EntityTypeShape EntityType="BanDongHoModel.Wishlist" Width="1.5" PointX="7.375" PointY="10.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

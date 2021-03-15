@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
-
 namespace BanDongHoAPI
 {
     public static class WebApiConfig

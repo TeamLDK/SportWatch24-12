@@ -62,7 +62,7 @@
 
                                                     <span class="dash__w-icon dash__w-icon-style-1"><i class="fas fa-cart-arrow-down"></i></span>
 
-                                                    <span class="dash__w-text">4</span>
+                                                    <span class="dash__w-text" id="orderHoaoDon"></span>
 
                                                     <span class="dash__w-name">Orders Placed</span></div>
                                             </li>
@@ -71,7 +71,7 @@
 
                                                     <span class="dash__w-icon dash__w-icon-style-3"><i class="far fa-heart"></i></span>
 
-                                                    <span class="dash__w-text">0</span>
+                                                    <span class="dash__w-text" id="num-wishlist">0</span>
 
                                                     <span class="dash__w-name">Wishlist</span></div>
                                             </li>
@@ -134,71 +134,8 @@
                                                     <th>Total</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>3054231326</td>
-                                                    <td>26/13/2016</td>
-                                                    <td>
-                                                        <div class="dash__table-img-wrap">
-
-                                                            <img class="u-img-fluid" src="images/product/electronic/product3.jpg" alt=""></div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="dash__table-total">
-
-                                                            <span>$126.00</span>
-                                                            <div class="dash__link dash__link--brand"></div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3054231326</td>
-                                                    <td>26/13/2016</td>
-                                                    <td>
-                                                        <div class="dash__table-img-wrap">
-
-                                                            <img class="u-img-fluid" src="images/product/electronic/product14.jpg" alt=""></div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="dash__table-total">
-
-                                                            <span>$126.00</span>
-                                                            <div class="dash__link dash__link--brand"></div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3054231326</td>
-                                                    <td>26/13/2016</td>
-                                                    <td>
-                                                        <div class="dash__table-img-wrap">
-
-                                                            <img class="u-img-fluid" src="images/product/men/product8.jpg" alt=""></div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="dash__table-total">
-
-                                                            <span>$126.00</span>
-                                                            <div class="dash__link dash__link--brand"></div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3054231326</td>
-                                                    <td>26/13/2016</td>
-                                                    <td>
-                                                        <div class="dash__table-img-wrap">
-
-                                                            <img class="u-img-fluid" src="images/product/women/product10.jpg" alt=""></div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="dash__table-total">
-
-                                                            <span>$126.00</span>
-                                                            <div class="dash__link dash__link--brand"></div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                            <tbody id="hoa_don">
+                                                
                                             </tbody>
                                         </table>
                                     </div>
@@ -220,11 +157,13 @@
             let item = localStorage.getItem('inforUser');
             if (item != null) {
                 getInforCustomer(item);
+                getInforhoadon(item);
+                getNumWishlist(item);
             }
             else {
-                alert('false');
+                window.location = "Login.aspx";
             }
-            
+
         });
 
         getInforCustomer = (id_kh) => {
@@ -242,11 +181,111 @@
                     $('#full-name-customer').text(response.ten_kh);
                     $('#email-customer').text(response.email_kh);
                     $('#phone-numble-customer').text(response.sdt_kh);
-                    $('#birthday-customer').text('02-08-2000');
+                    $('#birthday-customer').text('20-2-2000');
                     $('#address-customer').text(response.dia_chi_kh);
                 },
                 error: function (error) {
                     alert('error');
+                    console.error(error)
+                }
+            });
+        }
+
+
+        getInforhoadon = (id_kh) => {
+            let urlStr = `https://localhost:44344/api/HoaDons?id_kh=` + id_kh;
+            $.ajax({
+                url: urlStr,
+                success: function (response) {
+                    if (response == null) {
+                        window.location = "Blog.aspx";
+                    }
+                    else {
+                        console.log("hoadon", response);
+                        let contentHoaDon = $('#hoa_don');
+                        let constHoaDon = 0;
+                        $.each(response, function (_, item) {
+                            constHoaDon++;
+                            let chiTietHoaDon = getInforChiTietHoaDon(item.id_hoa_don);
+                            $.each(chiTietHoaDon, function (_, index) {
+                                let product = getSigleProduct(index.id_san_pham);
+                                $(
+                                    `
+                                <tr>
+                                    <td>`+ item.id_hoa_don + `</td>
+                                    <td>`+ getStrDate(item.ngay_hoa_don) + `</td>
+                                    <td>
+                                        <div class="dash__table-img-wrap">
+
+                                            <img class="u-img-fluid" src="../Uploads/AnhSP/`+ getImageProduct(index.id_san_pham) + `" alt=""></div>
+                                    </td>
+                                    <td>
+                                        <div class="dash__table-total">
+
+                                            <span>`+ formatMoney(index.so_luong * product.gia_san_pham) + ` VND</span>
+                                            <div class="dash__link dash__link--brand"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            `
+                                ).appendTo(contentHoaDon);
+
+
+
+                            })
+
+                        }
+                        )
+                        let orderHoaoDon = $('#orderHoaoDon');
+                        $(
+                            `
+                            <div>`+ constHoaDon + `</div>
+                        `
+                        ).appendTo(orderHoaoDon);
+                    }
+                },
+                error: function (error) {
+                    console.error(error)
+                    window.location = "Blog.aspx";
+                }
+            });
+        }
+
+
+        getInforChiTietHoaDon = (idHoaDon) => {
+            let urlStr = `https://localhost:44344/api/ChiTietHoaDons/` + idHoaDon;
+            let chiTietHD;
+            $.ajax({
+                url: urlStr,
+                async: false,
+                success: function (response) {
+                    if (response == null) {
+                    }
+                    else {
+                        console.log("response", response);
+                        chiTietHD = response;
+                    }
+                },
+                error: function (error) {
+                    console.error(error)
+                }
+            });
+            return chiTietHD;
+        }
+
+        getNumWishlist = (idKhachHang) => {
+            let urlStr = `https://localhost:44344/api/Wishlists?id_kh=` + idKhachHang;
+            $.ajax({
+                url: urlStr,
+                success: function (response) {
+                    let $numWishlist = $("#num-wishlist");
+                    let num = 0;
+                    $.each(response, function (_, item) {
+                        num++;
+                    })
+                    $numWishlist.text(num);
+                },
+                error: function (error) {
                     console.error(error)
                 }
             });
